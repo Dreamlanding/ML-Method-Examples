@@ -9,4 +9,7 @@ import os
 
 path = r'..\data'
 training_sample = 'Logistic_Regression-trainingSample.txt'
-te
+testing_sample = 'Logistic_Regression-testingSample.txt'
+
+# 从文件中读入训练样本的数据
+def loadDataSet(p, file_n):
