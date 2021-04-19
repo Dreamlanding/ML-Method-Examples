@@ -13,3 +13,7 @@ testing_sample = 'Logistic_Regression-testingSample.txt'
 
 # 从文件中读入训练样本的数据
 def loadDataSet(p, file_n):
+    dataMat = []
+    labelMat = []
+    fr = open(os.path.join(p, file_n))
+    
