@@ -16,4 +16,7 @@ def loadDataSet(p, file_n):
     dataMat = []
     labelMat = []
     fr = open(os.path.join(p, file_n))
-    
+    for line in fr.readlines():
+        lineArr = line.strip().split()
+        # 三个特征x0, x1, x2, x0=1
+ 
