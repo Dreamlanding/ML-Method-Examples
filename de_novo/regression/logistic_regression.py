@@ -20,4 +20,8 @@ def loadDataSet(p, file_n):
         lineArr = line.strip().split()
         # 三个特征x0, x1, x2, x0=1
         dataMat.append([1.0, float(lineArr[0]), float(lineArr[1])])
-        labelMat.append(int(line
+        labelMat.append(int(lineArr[2]))  # 样本标签y
+    return dataMat, labelMat
+
+def sigmoid(X):
+    return
