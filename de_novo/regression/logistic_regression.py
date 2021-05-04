@@ -24,4 +24,8 @@ def loadDataSet(p, file_n):
     return dataMat, labelMat
 
 def sigmoid(X):
-    return
+    return 1.0/(1+np.exp(-X))
+
+# 梯度下降法求回归系数a
+def gradAscent(dataMatIn, classLabels):
+    dataMatrix
