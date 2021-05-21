@@ -28,4 +28,5 @@ def sigmoid(X):
 
 # 梯度下降法求回归系数a
 def gradAscent(dataMatIn, classLabels):
-    dataMatrix
+    dataMatrix = np.mat(dataMatIn)             # 转换成numpy中的矩阵, X, 90 x 3
+    labelMat = np.mat(classLabels).transpose
