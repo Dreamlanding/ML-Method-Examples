@@ -31,4 +31,7 @@ def gradAscent(dataMatIn, classLabels):
     dataMatrix = np.mat(dataMatIn)             # 转换成numpy中的矩阵, X, 90 x 3
     labelMat = np.mat(classLabels).transpose()  # 转换成numpy中的矩阵, y, 90 x 1
     m, n = shape(dataMatrix)  # m=90, n=3
-    alpha = 0.001  
+    alpha = 0.001  # 学习率
+    maxCycles = 1000
+    weights = ones((n, 1))  # 初始参数, 3 x 1
+    for k in range(maxCycl
