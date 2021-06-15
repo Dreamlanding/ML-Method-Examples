@@ -34,4 +34,5 @@ def gradAscent(dataMatIn, classLabels):
     alpha = 0.001  # 学习率
     maxCycles = 1000
     weights = ones((n, 1))  # 初始参数, 3 x 1
-    for k in range(maxCycl
+    for k in range(maxCycles):              # heavy on matrix operations
+        h = sigmoid(np.dot(dataMat
