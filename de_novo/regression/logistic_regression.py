@@ -35,4 +35,5 @@ def gradAscent(dataMatIn, classLabels):
     maxCycles = 1000
     weights = ones((n, 1))  # 初始参数, 3 x 1
     for k in range(maxCycles):              # heavy on matrix operations
-        h = sigmoid(np.dot(dataMat
+        h = sigmoid(np.dot(dataMatrix, weights))     # 模型预测值, 90 x 1, 矩阵乘法
+        error = h - labelMat              # 真实值与预测值之间的误差, 
