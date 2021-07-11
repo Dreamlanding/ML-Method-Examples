@@ -42,4 +42,5 @@ def gradAscent(dataMatIn, classLabels):
     return weights
 
 # 测试函数
-def test_logistic_regr
+def test_logistic_regression():
+    dataArr, labelMat = loadDataSet(path, training_sample)  # 读入训练样本中的原始数据
