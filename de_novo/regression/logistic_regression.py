@@ -49,3 +49,6 @@ def test_logistic_regression():
     print(dataArr, labelMat)
     print(A)
     print(h)
+    # plotBestFit(A)
+
+test_logistic_regression()
