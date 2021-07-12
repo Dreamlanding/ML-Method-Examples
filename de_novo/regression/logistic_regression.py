@@ -45,4 +45,7 @@ def gradAscent(dataMatIn, classLabels):
 def test_logistic_regression():
     dataArr, labelMat = loadDataSet(path, training_sample)  # 读入训练样本中的原始数据
     A = gradAscent(dataArr, labelMat)  # 回归系数a的值
-    h = sigmoid(np.mat(dataArr, A))  #
+    h = sigmoid(np.mat(dataArr, A))  # 预测结果h(a)的值, 矩阵乘法
+    print(dataArr, labelMat)
+    print(A)
+    print(h)
