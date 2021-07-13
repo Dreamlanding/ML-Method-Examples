@@ -31,3 +31,96 @@ def vgg16_model(weights_path):
     model.add(Conv2D(256, (3, 3), activation='relu', padding='same', name='block3_conv2'))
     model.add(Conv2D(256, (3, 3), activation='relu', padding='same', name='block3_conv3'))
     model.add(MaxPooling2D((2, 2), strides=(2, 2), name='block3_pool'))
+
+    # Block 4
+    model.add(Conv2D(512, (3, 3), activation='relu', padding='same', name='block4_conv1'))
+    model.add(Conv2D(512, (3, 3), activation='relu', padding='same', name='block4_conv2'))
+    model.add(Conv2D(512, (3, 3), activation='relu', padding='same', name='block4_conv3'))
+    model.add(MaxPooling2D((2, 2), strides=(2, 2), name='block4_pool'))
+
+    # Block 5
+    model.add(Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv1'))
+    model.add(Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv2'))
+    model.add(Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv3'))
+    model.add(MaxPooling2D((2, 2), strides=(2, 2), name='block5_pool'))
+    
+    # Block 6, fc
+    model.add(Flatten())
+    model.add(Dense(4096, activation='relu', name='fc1'))
+    model.add(Dense(4096, activation='relu', name='fc2'))
+    model.add(Dense(1000, activation='softmax', name='predictions'))
+    model.load_weights(weights_path)
+    return model
+
+def process_pic(img_path, model='', predict=True):
+    img_path = img_path
+    img = image.load_img(img_path, target_size=(224, 224))
+    x = image.img_to_array(img)
+    # 下面两步不是很理解
+    x = np.expand_dims(x, axis=0)
+    x = preprocess_input(x)
+    
+    if predict:  # predict pic's class
+        last_layer_features = model.predict(x)  # 1000 last_layer_features
+        # print('Predicted:', decode_predictions(last_layer_features, top=3)[0])
+        return decode_predictions(last_layer_features, top=3)[0]
+    else:  # return 4096 last_layer_features
+        last_layer_features = model.predict(x)
+        return last_layer_features
+
+def create_data_json(root_d, file_n):
+    """
+    create dataset.json file and tasks.txt
+    :param root_d:
+    :param file_n:
+    :return:
+    """
+    a_dic = {'images': [], 'dataset': 'self_img'}
+    with open(os.path.join(root_d, file_n)) as f_handle:
+        for x in f_handle:
+            each_img_dic = {}
+            x = x.strip()
+            x_list = x.split('\t')
+            each_img_dic['filename'] = x_list[0]
+            each_img_dic['imgid'] = x_list[1]
+            each_img_dic['senences'] = []
+            each_img_dic['split'] = 'test'
+            each_img_dic['sentids'] = []
+            each_img_dic['predict_classes'] = x_list[2:]
+            a_dic['images'].append(each_img_dic)
+            with open(os.path.join(root_d, 'img', 'tasks.txt'), 'a') as f_handle:
+                f_handle.write(x_list[0] + '\n')
+    with open(os.path.join(root_d, 'self_img_dataset.json'), 'a') as f_handle:
+        f_handle.write(json.dumps(a_dic, indent=2))
+
+
+def main(params, model):
+    # predict images' classes
+    self_pic_dir = params['self_pic_dir']
+    line = 0
+    for root, dirs, files in os.walk(os.path.join(self_pic_dir, 'img')):
+        for f in files:
+            if f.endswith('jpg'):
+                # print(f)
+                img_path = os.path.join(root, f)
+                predict_results = process_pic(img_path, model=model)
+                predict_list = [': '.join(str(i) for i in list(_[1:])) for _ in predict_results]
+                output_str = '\t'.join([f, str(line)] + predict_list)
+                line += 1
+                with open(os.path.join(self_pic_dir, 'predict_images_class.txt'), 'a') as f_handle:
+                    f_handle.write(output_str + '\n')
+    
+    # get images' features
+    features = np.zeros([line, 4096])
+    line2 = 0
+    # 去掉最后一层后，构建一个新的model
+    model.layers.pop()
+    model2 = Model(model.input, model.layers[-1].output)
+    for root, dirs, files in os.walk(os.path.join(self_pic_dir, 'img')):
+        for f in files:
+            if f.endswith('jpg'):
+                print(f)
+                # f = 'butterfly1.jpg'
+                img_path = os.path.join(root, f)
+                features[line2] = process_pic(img_path, model=model2, predict=False)
+                line2 += 1
