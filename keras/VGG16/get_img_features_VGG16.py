@@ -124,3 +124,29 @@ def main(params, model):
                 img_path = os.path.join(root, f)
                 features[line2] = process_pic(img_path, model=model2, predict=False)
                 line2 += 1
+    np.save(os.path.join(self_pic_dir, 'self_img_vgg_feats'), features)
+    # features_file = 'self_img_vgg_feats.npy'
+    class_file = 'predict_images_class.txt'
+    create_data_json(self_pic_dir, class_file)
+
+
+if __name__ == '__main__':
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    print(BASE_DIR)
+    # 'VGG16 Model pre-training weights in kernels based on tensorflow'
+    weights_path = os.path.join(BASE_DIR, 'VGG16_weights', 'vgg16_weights_tf_dim_ordering_tf_kernels.h5')
+    if not os.path.exists(weights_path):
+        # this file can be downloaded from https://github.com/fchollet/deep-learning-models/releases
+        # or https://pan.baidu.com/s/1dEA0sXb
+        print('please download "vgg16_weights_tf_dim_ordering_tf_kernels.h5" and put it into ', weights_path)
+    model = vgg16_model(weights_path)
+    self_pic_dir = os.path.join(BASE_DIR, 'self_pic')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('self_pic_dir', default=self_pic_dir,
+                        type=str, help='self pictures dir')
+    args = parser.parse_args([self_pic_dir])
+    params = vars(args)  # convert to ordinary dict
+    print('parsed parameters: ')
+    print(json.dumps(params, indent=2))
+    print('start to predict images\' classes and get VGG features...')
+    main(params, model)
