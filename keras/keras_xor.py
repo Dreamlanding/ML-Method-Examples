@@ -8,4 +8,8 @@ https://gist.github.com/stewartpark/187895beb89f0a1b3a54
 """
 from keras import backend as K
 from keras.models import Sequential
-from keras.layers i
+from keras.layers import Dense
+from keras.optimizers import SGD
+import numpy as np
+
+batch_size = 1
