@@ -19,4 +19,6 @@ epochs = 1000
 x_train = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
 y_train = np.array([[0], [1], [1], [0]])
 x_test = np.array([[0, 0], [1, 0]])
-y_test = np.array([[0], [1]
+y_test = np.array([[0], [1]])
+print(x_train.shape[0], 'train samples')
+print(x_test.shape[0], '
