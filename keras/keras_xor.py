@@ -13,3 +13,8 @@ from keras.optimizers import SGD
 import numpy as np
 
 batch_size = 1
+num_classes = 1
+epochs = 1000
+
+x_train = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y_train = 
