@@ -21,4 +21,9 @@ y_train = np.array([[0], [1], [1], [0]])
 x_test = np.array([[0, 0], [1, 0]])
 y_test = np.array([[0], [1]])
 print(x_train.shape[0], 'train samples')
-print(x_test.shape[0], '
+print(x_test.shape[0], 'test samples')
+
+model = Sequential()  # 定义一个序贯模型
+
+# 添加一个全连接层，输入层有2个特征，后面的隐藏层有2个单元
+# 隐藏层的激活函数为t
