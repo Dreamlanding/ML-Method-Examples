@@ -30,4 +30,7 @@ model = Sequential()  # 定义一个序贯模型
 # 所有层的bias都是自动添加的
 model.add(Dense(2, activation='tanh', input_shape=(2,)))
 
-# 最后的输出
+# 最后的输出也是一个全连接层，激活函数为sigmoid
+model.add(Dense(1, activation='sigmoid'))
+
+# check the structure and parameters of t
