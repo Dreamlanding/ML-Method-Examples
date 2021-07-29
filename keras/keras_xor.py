@@ -26,4 +26,8 @@ print(x_test.shape[0], 'test samples')
 model = Sequential()  # 定义一个序贯模型
 
 # 添加一个全连接层，输入层有2个特征，后面的隐藏层有2个单元
-# 隐藏层的激活函数为t
+# 隐藏层的激活函数为tanh
+# 所有层的bias都是自动添加的
+model.add(Dense(2, activation='tanh', input_shape=(2,)))
+
+# 最后的输出
