@@ -33,4 +33,11 @@ model.add(Dense(2, activation='tanh', input_shape=(2,)))
 # 最后的输出也是一个全连接层，激活函数为sigmoid
 model.add(Dense(1, activation='sigmoid'))
 
-# check the structure and parameters of t
+# check the structure and parameters of this model
+model.summary()
+
+# 优化器
+sgd = SGD(lr=0.8) # learning rate
+
+# 模型训练(fit)前需要编译
+mod
