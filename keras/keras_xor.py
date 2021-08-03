@@ -40,4 +40,6 @@ model.summary()
 sgd = SGD(lr=0.8) # learning rate
 
 # 模型训练(fit)前需要编译
-mod
+model.compile(loss='binary_crossentropy',
+              optimizer=sgd,
+           
