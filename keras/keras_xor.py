@@ -42,4 +42,7 @@ sgd = SGD(lr=0.8) # learning rate
 # 模型训练(fit)前需要编译
 model.compile(loss='binary_crossentropy',
               optimizer=sgd,
-           
+              metrics=['accuracy'])
+
+# 自动求导，梯度下降和反向传播
+history = model.fit(x_train, y_train,
