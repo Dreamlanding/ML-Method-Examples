@@ -46,3 +46,6 @@ model.compile(loss='binary_crossentropy',
 
 # 自动求导，梯度下降和反向传播
 history = model.fit(x_train, y_train,
+                    batch_size=batch_size,
+                    epochs=epochs,
+                   
