@@ -51,4 +51,6 @@ history = model.fit(x_train, y_train,
                     verbose=1,
                     validation_data=(x_test, y_test))
 
-# 利用测试样本评价模型，可以计算loss值以及测试集中
+# 利用测试样本评价模型，可以计算loss值以及测试集中的正确率
+score = model.evaluate(x_test, y_test, verbose=0)
+print('Test loss:', scor
