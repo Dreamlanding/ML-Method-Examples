@@ -58,4 +58,5 @@ print('Test accuracy:', score[1])
 
 # 利用模型进行预测
 print(model.predict_proba(x_train))
-#
+# https://github.com/tensorflow/tensorflow/issues/3388
+K.clear_session()
