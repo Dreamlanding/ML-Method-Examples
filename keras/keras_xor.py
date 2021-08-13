@@ -53,4 +53,9 @@ history = model.fit(x_train, y_train,
 
 # 利用测试样本评价模型，可以计算loss值以及测试集中的正确率
 score = model.evaluate(x_test, y_test, verbose=0)
-print('Test loss:', scor
+print('Test loss:', score[0])
+print('Test accuracy:', score[1])
+
+# 利用模型进行预测
+print(model.predict_proba(x_train))
+#
