@@ -13,4 +13,8 @@ Created on Sun Nov 12 08:44:37 2017
 def sampling2pmf(n, dist, m=100000):
     """
     n: sample size for each experiment
-    m: how many times do you do experi
+    m: how many times do you do experiment, fix in 100000
+    dist: frozen distribution
+    """
+    current_dist = dist
+    sum
