@@ -17,4 +17,6 @@ def sampling2pmf(n, dist, m=100000):
     dist: frozen distribution
     """
     current_dist = dist
-    sum
+    sum_of_samples = []
+    for i in range(m):
+        samples = current_dist.rvs(size=n) 
