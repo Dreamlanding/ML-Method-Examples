@@ -19,4 +19,6 @@ def sampling2pmf(n, dist, m=100000):
     current_dist = dist
     sum_of_samples = []
     for i in range(m):
-        samples = current_dist.rvs(size=n) 
+        samples = current_dist.rvs(size=n)  # 与每次取一个值，取n次效果相同
+        # print(samples)
+        sum_of_samples.append(np.sum(
