@@ -21,4 +21,6 @@ def sampling2pmf(n, dist, m=100000):
     for i in range(m):
         samples = current_dist.rvs(size=n)  # 与每次取一个值，取n次效果相同
         # print(samples)
-        sum_of_samples.append(np.sum(
+        sum_of_samples.append(np.sum(samples))
+    # 下面计算频率的方式不适合连续型随机变量，因此直接返回随机变量的和
+    # val, cnt = np.unique(sum_of_sample
