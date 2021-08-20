@@ -23,4 +23,7 @@ def sampling2pmf(n, dist, m=100000):
         # print(samples)
         sum_of_samples.append(np.sum(samples))
     # 下面计算频率的方式不适合连续型随机变量，因此直接返回随机变量的和
-    # val, cnt = np.unique(sum_of_sample
+    # val, cnt = np.unique(sum_of_samples, return_counts=True)
+    # pmf = cnt / len(sum_of_samples)
+    # return val, pmf
+    
