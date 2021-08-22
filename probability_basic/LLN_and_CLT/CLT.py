@@ -26,4 +26,9 @@ def sampling2pmf(n, dist, m=100000):
     # val, cnt = np.unique(sum_of_samples, return_counts=True)
     # pmf = cnt / len(sum_of_samples)
     # return val, pmf
+    return sum_of_samples
+
+
+def plot(n, dist, subplot, plt_handle, dist_type):
+    """
     
