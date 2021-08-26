@@ -31,4 +31,6 @@ def sampling2pmf(n, dist, m=100000):
 
 def plot(n, dist, subplot, plt_handle, dist_type):
     """
-    
+    :param n: sample size
+    :param dist: distribution of each single sample
+    :param sub
