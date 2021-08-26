@@ -33,4 +33,6 @@ def plot(n, dist, subplot, plt_handle, dist_type):
     """
     :param n: sample size
     :param dist: distribution of each single sample
-    :param sub
+    :param subplot: location of sub-graph, such as 221, 222, 223, 224
+    :param plt_handle: plt object
+    :param d
