@@ -41,4 +41,6 @@ def plot(n, dist, subplot, plt_handle, dist_type):
     bins = 20000
     plt = plt_handle
     plt.subplot(subplot)
-    mu = 
+    mu = n * dist.mean()
+    sigma = np.sqrt(n * dist.var())
+    samples = sampling2
