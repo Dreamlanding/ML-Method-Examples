@@ -46,4 +46,5 @@ def plot(n, dist, subplot, plt_handle, dist_type):
     samples = sampling2pmf(n=n, dist=dist)
     # print(samples)
     # normed参数可以对直方图进行标准化，从而使纵坐标表示概率而不是次数
- 
+    plt.hist(samples, normed=True, bins=50, histtype='stepfilled', alpha=1)
+    plt.y
