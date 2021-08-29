@@ -37,4 +37,8 @@ def plot(n, dist, subplot, plt_handle, dist_type):
     :param plt_handle: plt object
     :param dist_type: the type of distribution
     :return: plt object
-    ""
+    """
+    bins = 20000
+    plt = plt_handle
+    plt.subplot(subplot)
+    mu = 
