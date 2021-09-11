@@ -49,4 +49,6 @@ def plot(n, dist, subplot, plt_handle, dist_type):
     plt.hist(samples, normed=True, bins=50, histtype='stepfilled', alpha=1)
     plt.ylabel('Probability')
     plt.title('Sum of {} dist. (n={})'.format(dist_type, n))
-    
+    # normal distribution
+    norm_dis = stats.norm(mu, sigma)
+    norm_x = np.linspace(
