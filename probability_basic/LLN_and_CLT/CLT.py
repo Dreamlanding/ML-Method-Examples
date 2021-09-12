@@ -53,4 +53,9 @@ def plot(n, dist, subplot, plt_handle, dist_type):
     norm_dis = stats.norm(mu, sigma)
     norm_x = np.linspace(mu - 3 * sigma, mu + 3 * sigma, bins)
     pdf1 = norm_dis.pdf(norm_x)
-    plt.plot
+    plt.plot(norm_x, pdf1, 'r--', alpha=0.4)
+    return plt
+
+size = [1, 2, 3, 4, 8, 10]
+
+# sum of bernoulli d
