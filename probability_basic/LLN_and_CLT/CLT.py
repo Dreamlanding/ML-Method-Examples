@@ -58,4 +58,7 @@ def plot(n, dist, subplot, plt_handle, dist_type):
 
 size = [1, 2, 3, 4, 8, 10]
 
-# sum of bernoulli d
+# sum of bernoulli distribution
+# dist_type = 'bern'
+# bern_para = [0.99]
+# single_sample_dist = stat
