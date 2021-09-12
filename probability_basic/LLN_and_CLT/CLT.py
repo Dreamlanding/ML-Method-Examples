@@ -61,4 +61,8 @@ size = [1, 2, 3, 4, 8, 10]
 # sum of bernoulli distribution
 # dist_type = 'bern'
 # bern_para = [0.99]
-# single_sample_dist = stat
+# single_sample_dist = stats.bernoulli(p=bern_para[0])  # 定义一个伯努利分布
+
+# sum of binomial distribution
+# dist_type = 'bino'
+# bin
