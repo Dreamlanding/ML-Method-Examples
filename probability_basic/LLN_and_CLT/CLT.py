@@ -51,4 +51,6 @@ def plot(n, dist, subplot, plt_handle, dist_type):
     plt.title('Sum of {} dist. (n={})'.format(dist_type, n))
     # normal distribution
     norm_dis = stats.norm(mu, sigma)
-    norm_x = np.linspace(
+    norm_x = np.linspace(mu - 3 * sigma, mu + 3 * sigma, bins)
+    pdf1 = norm_dis.pdf(norm_x)
+    plt.plot
