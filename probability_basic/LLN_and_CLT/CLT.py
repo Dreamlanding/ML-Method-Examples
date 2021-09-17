@@ -66,4 +66,9 @@ size = [1, 2, 3, 4, 8, 10]
 # sum of binomial distribution
 # dist_type = 'bino'
 # bino_para = [20, 0.4]
-# single_sample_dist = stats.binom(n=bino_para[0], p=bino_para[1])  # 定义一个二
+# single_sample_dist = stats.binom(n=bino_para[0], p=bino_para[1])  # 定义一个二项分布
+
+# sum of uniform distribution
+dist_type = 'uniform'
+uniform_para = [3, 2]
+single_sample_dist
