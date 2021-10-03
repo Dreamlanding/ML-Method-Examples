@@ -79,4 +79,4 @@ plt.figure(1)
 plt = plot(n=size[0], dist=single_sample_dist, subplot=321, plt_handle=plt, dist_type=dist_type)
 plt = plot(n=size[1], dist=single_sample_dist, subplot=322, plt_handle=plt, dist_type=dist_type)
 plt = plot(n=size[2], dist=single_sample_dist, subplot=323, plt_handle=plt, dist_type=dist_type)
-plt = plot
+plt = plot(n=size[3], dist=single_sample_dist, subplot=324, plt_handle=plt, dist_type=di
