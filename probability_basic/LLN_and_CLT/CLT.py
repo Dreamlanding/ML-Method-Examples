@@ -78,4 +78,5 @@ single_sample_dist = stats.uniform(loc=uniform_para[0], scale=uniform_para[1])  
 plt.figure(1)
 plt = plot(n=size[0], dist=single_sample_dist, subplot=321, plt_handle=plt, dist_type=dist_type)
 plt = plot(n=size[1], dist=single_sample_dist, subplot=322, plt_handle=plt, dist_type=dist_type)
-plt = plot(n=size[2]
+plt = plot(n=size[2], dist=single_sample_dist, subplot=323, plt_handle=plt, dist_type=dist_type)
+plt = plot
