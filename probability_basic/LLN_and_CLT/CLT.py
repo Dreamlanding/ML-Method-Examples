@@ -83,4 +83,4 @@ plt = plot(n=size[3], dist=single_sample_dist, subplot=324, plt_handle=plt, dist
 plt = plot(n=size[4], dist=single_sample_dist, subplot=325, plt_handle=plt, dist_type=dist_type)
 plt = plot(n=size[5], dist=single_sample_dist, subplot=326, plt_handle=plt, dist_type=dist_type)
 plt.tight_layout()
-plt.savefig('sum_of_{}_dist_2.png'.format(dist_type)
+plt.savefig('sum_of_{}_dist_2.png'.format(dist_type), dpi=200)
