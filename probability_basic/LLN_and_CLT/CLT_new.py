@@ -16,4 +16,7 @@ def sampling2pmf(n, dist, t=100000):
     t: how many times do you do experiment, fix in 100000
     dist: frozen distribution
     """
-    cu
+    current_dist = dist
+    sum_of_samples = np.zeros(t)
+    for i in range(t):
+        sa
