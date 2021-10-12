@@ -19,4 +19,6 @@ def sampling2pmf(n, dist, t=100000):
     current_dist = dist
     sum_of_samples = np.zeros(t)
     for i in range(t):
-        sa
+        samples = []
+        for j in range(n):  # n次独立的试验
+            samples.append(current_dist.r
