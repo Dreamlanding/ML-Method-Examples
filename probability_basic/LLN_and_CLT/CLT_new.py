@@ -26,4 +26,7 @@ def sampling2pmf(n, dist, t=100000):
     return sum_of_samples
 
 
-d
+def plot(n, dist, subplot):
+    """
+    :param n: sample size
+    :param dist: distribution of 
