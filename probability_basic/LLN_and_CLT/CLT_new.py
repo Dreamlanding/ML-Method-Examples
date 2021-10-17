@@ -30,4 +30,7 @@ def plot(n, dist, subplot):
     """
     :param n: sample size
     :param dist: distribution of each single sample
-    :param subplot: location of sub-graph, such as 221,
+    :param subplot: location of sub-graph, such as 221, 222, 223, 224
+    """
+    plt.subplot(3, 2, subplot)
+    mu = n * dist.mean()
