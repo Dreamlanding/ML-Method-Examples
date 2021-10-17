@@ -29,4 +29,5 @@ def sampling2pmf(n, dist, t=100000):
 def plot(n, dist, subplot):
     """
     :param n: sample size
-    :param dist: distribution of 
+    :param dist: distribution of each single sample
+    :param subplot: location of sub-graph, such as 221,
