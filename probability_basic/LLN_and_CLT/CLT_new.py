@@ -34,3 +34,6 @@ def plot(n, dist, subplot):
     """
     plt.subplot(3, 2, subplot)
     mu = n * dist.mean()
+    sigma = np.sqrt(n * dist.var())
+    samples = sampling2pmf(n=n, dist=dist)
+    # normed参
