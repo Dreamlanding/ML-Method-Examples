@@ -42,4 +42,6 @@ def plot(n, dist, subplot):
     plt.ylabel('Probability')
     # normal distribution
     norm_dis = stats.norm(mu, sigma)
-    norm_x = np.linspace(mu - 3 * si
+    norm_x = np.linspace(mu - 3 * sigma, mu + 3 * sigma, 10000)
+    pdf = norm_dis.pdf(norm_x)
+    plt.plot(norm_x, pdf, 'r--', 
