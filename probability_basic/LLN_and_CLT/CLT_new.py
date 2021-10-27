@@ -44,4 +44,5 @@ def plot(n, dist, subplot):
     norm_dis = stats.norm(mu, sigma)
     norm_x = np.linspace(mu - 3 * sigma, mu + 3 * sigma, 10000)
     pdf = norm_dis.pdf(norm_x)
-    plt.plot(norm_x, pdf, 'r--', 
+    plt.plot(norm_x, pdf, 'r--', alpha=0.6, label='N(${0:.0f}, {1:.2f}^2$)'.format(mu, sigma))
+    plt.legend(loc='upper 
