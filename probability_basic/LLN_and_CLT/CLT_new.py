@@ -39,4 +39,7 @@ def plot(n, dist, subplot):
     # normed参数可以对直方图进行标准化，从而使纵坐标表示概率而不是次数
     plt.hist(samples, normed=True, bins=100, color='#348ABD',
              label='{} RVs'.format(n))
-    plt.ylabel('Probabi
+    plt.ylabel('Probability')
+    # normal distribution
+    norm_dis = stats.norm(mu, sigma)
+    norm_x = np.linspace(mu - 3 * si
