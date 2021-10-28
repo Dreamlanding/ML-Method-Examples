@@ -50,4 +50,6 @@ def plot(n, dist, subplot):
 size = [1, 2, 3, 4, 8, 10]
 
 # sum of uniform distribution
-dist_type = 'unifo
+dist_type = 'uniform'
+uniform_para = [3, 2]
+single_sample_dist = stats.uniform(loc=uniform_para[0], 
