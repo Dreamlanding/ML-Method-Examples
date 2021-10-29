@@ -52,4 +52,7 @@ size = [1, 2, 3, 4, 8, 10]
 # sum of uniform distribution
 dist_type = 'uniform'
 uniform_para = [3, 2]
-single_sample_dist = stats.uniform(loc=uniform_para[0], 
+single_sample_dist = stats.uniform(loc=uniform_para[0], scale=uniform_para[1])  # 定义一个均匀分布
+
+# 下面是利用matplotlib画图
+plt.figure(figsize=(10, 7))  # big
