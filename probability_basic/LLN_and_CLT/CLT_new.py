@@ -56,4 +56,6 @@ single_sample_dist = stats.uniform(loc=uniform_para[0], scale=uniform_para[1])  
 
 # 下面是利用matplotlib画图
 plt.figure(figsize=(10, 7))  # bigger size
-plt.suptitle('Sum of {} dist. random variables (RVs) converge to a Gau
+plt.suptitle('Sum of {} dist. random variables (RVs) converge to a Gaussian distribution (CLT)'.format(dist_type),
+             fontsize=16)
+for s in r
