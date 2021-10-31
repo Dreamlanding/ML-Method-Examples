@@ -58,4 +58,7 @@ single_sample_dist = stats.uniform(loc=uniform_para[0], scale=uniform_para[1])  
 plt.figure(figsize=(10, 7))  # bigger size
 plt.suptitle('Sum of {} dist. random variables (RVs) converge to a Gaussian distribution (CLT)'.format(dist_type),
              fontsize=16)
-for s in r
+for s in range(len(size)):
+    plot(n=size[s], dist=single_sample_dist, subplot=s+1)
+
+plt.savefig('sum_of_{}_d
