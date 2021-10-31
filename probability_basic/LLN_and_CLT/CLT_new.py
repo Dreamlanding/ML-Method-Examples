@@ -61,4 +61,4 @@ plt.suptitle('Sum of {} dist. random variables (RVs) converge to a Gaussian dist
 for s in range(len(size)):
     plot(n=size[s], dist=single_sample_dist, subplot=s+1)
 
-plt.savefig('sum_of_{}_d
+plt.savefig('sum_of_{}_dist.png'.format(dist_type), dpi=200)
