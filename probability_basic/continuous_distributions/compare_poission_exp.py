@@ -12,4 +12,6 @@ def compare_poission_exp():
       - On a particular river, overflow floods occur once every 100 years on average.
     :return:
     """
-    x = 
+    x = np.arange(20)
+    y1 = 1 - np.power(np.e, -x)  # lambda = 1
+    y2 = 1 - np.p
