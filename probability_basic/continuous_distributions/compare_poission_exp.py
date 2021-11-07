@@ -9,4 +9,7 @@ def compare_poission_exp():
       - https://stats.stackexchange.com/a/2094/134555
       - P(Xt <= x) = 1 - e^(-lambda * x)
     Now, I suppose lambda=1, just like this example(from wiki, Poisson_distribution):
-      - On a particular riv
+      - On a particular river, overflow floods occur once every 100 years on average.
+    :return:
+    """
+    x = 
