@@ -15,4 +15,9 @@ def compare_poission_exp():
     x = np.arange(20)
     y1 = 1 - np.power(np.e, -x)  # lambda = 1
     y2 = 1 - np.power(np.e, -0.2*x)  # lambda = 0.2
-    y3 = 1 - np.power(np.e, -5*x)  # lamb
+    y3 = 1 - np.power(np.e, -5*x)  # lambda = 1.5
+    print(y1)
+    print(y2)
+    print(y3)
+    fig, ax = plt.subplots(1, 1)
+    ax.plot
