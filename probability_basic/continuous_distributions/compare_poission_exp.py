@@ -20,4 +20,6 @@ def compare_poission_exp():
     print(y2)
     print(y3)
     fig, ax = plt.subplots(1, 1)
-    ax.plot
+    ax.plot(x, y1, 'r-', label='lambda=1')
+    ax.plot(x, y2, 'g-', label='lambda=0.2')
+    ax.plot(x, y3, 'b-', la
