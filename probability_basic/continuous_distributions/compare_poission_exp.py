@@ -22,4 +22,6 @@ def compare_poission_exp():
     fig, ax = plt.subplots(1, 1)
     ax.plot(x, y1, 'r-', label='lambda=1')
     ax.plot(x, y2, 'g-', label='lambda=0.2')
-    ax.plot(x, y3, 'b-', la
+    ax.plot(x, y3, 'b-', label='lambda=5')
+    ax.legend(loc='best', frameon=False)
+    plt.ylabel('Probabili
