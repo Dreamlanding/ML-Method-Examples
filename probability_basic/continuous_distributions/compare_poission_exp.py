@@ -28,4 +28,4 @@ def compare_poission_exp():
     plt.title('CDF of exponential distribution')
     plt.show()
 
-compare_poissi
+compare_poission_exp()
