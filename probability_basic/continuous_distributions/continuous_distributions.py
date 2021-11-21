@@ -10,4 +10,5 @@ def uniform_distribution(loc=0, scale=1):
     :param scale: 区间长度, 相当于 b-a
     :return:
     """
-    
+    uniform_dis = stats.uniform(loc=loc, scale=scale)
+    x = np.linspace(uniform_dis.ppf(0.01)
