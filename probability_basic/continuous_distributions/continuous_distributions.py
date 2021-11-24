@@ -17,4 +17,7 @@ def uniform_distribution(loc=0, scale=1):
 
     # 直接传入参数
     ax.plot(x, stats.uniform.pdf(x, loc=2, scale=4), 'r-',
-            lw=5, alpha=0.6
+            lw=5, alpha=0.6, label='uniform pdf')
+
+    # 从冻结的均匀分布取值
+    ax.plot(x, uniform_dis.pdf(x), 'k-',
