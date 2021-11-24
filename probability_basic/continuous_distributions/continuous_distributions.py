@@ -15,4 +15,6 @@ def uniform_distribution(loc=0, scale=1):
                     uniform_dis.ppf(0.99), 100)
     fig, ax = plt.subplots(1, 1)
 
-    
+    # 直接传入参数
+    ax.plot(x, stats.uniform.pdf(x, loc=2, scale=4), 'r-',
+            lw=5, alpha=0.6
