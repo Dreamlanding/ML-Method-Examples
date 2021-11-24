@@ -11,4 +11,8 @@ def uniform_distribution(loc=0, scale=1):
     :return:
     """
     uniform_dis = stats.uniform(loc=loc, scale=scale)
-    x = np.linspace(uniform_dis.ppf(0.01)
+    x = np.linspace(uniform_dis.ppf(0.01),
+                    uniform_dis.ppf(0.99), 100)
+    fig, ax = plt.subplots(1, 1)
+
+    
