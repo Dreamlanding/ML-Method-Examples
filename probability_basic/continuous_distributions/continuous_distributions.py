@@ -28,4 +28,7 @@ def uniform_distribution(loc=0, scale=1):
     print(vals)  # [ 2.004  4.     5.996]
 
     # Check accuracy of cdf and ppf
-    print(np.allclose([0.001, 0.5, 0.999], uniform_dis.cdf(val
+    print(np.allclose([0.001, 0.5, 0.999], uniform_dis.cdf(vals)))  # Ture
+
+    r = uniform_dis.rvs(size=10000)
+    ax.hist(r, normed=True, histtype='st
