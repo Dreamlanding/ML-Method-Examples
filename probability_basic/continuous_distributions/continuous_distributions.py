@@ -27,4 +27,5 @@ def uniform_distribution(loc=0, scale=1):
     vals = uniform_dis.ppf([0.001, 0.5, 0.999])
     print(vals)  # [ 2.004  4.     5.996]
 
-    # Chec
+    # Check accuracy of cdf and ppf
+    print(np.allclose([0.001, 0.5, 0.999], uniform_dis.cdf(val
