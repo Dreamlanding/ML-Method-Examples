@@ -24,4 +24,7 @@ def uniform_distribution(loc=0, scale=1):
             lw=2, label='frozen pdf')
 
     # 计算ppf分别等于0.001, 0.5, 0.999时的x值
-    vals = unif
+    vals = uniform_dis.ppf([0.001, 0.5, 0.999])
+    print(vals)  # [ 2.004  4.     5.996]
+
+    # Chec
