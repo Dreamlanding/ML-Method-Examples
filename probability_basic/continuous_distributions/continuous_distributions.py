@@ -31,4 +31,6 @@ def uniform_distribution(loc=0, scale=1):
     print(np.allclose([0.001, 0.5, 0.999], uniform_dis.cdf(vals)))  # Ture
 
     r = uniform_dis.rvs(size=10000)
-    ax.hist(r, normed=True, histtype='st
+    ax.hist(r, normed=True, histtype='stepfilled', alpha=0.2)
+    plt.ylabel('Probability')
+    plt.title(r'PDF of Un
