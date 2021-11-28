@@ -36,3 +36,8 @@ def uniform_distribution(loc=0, scale=1):
     plt.title(r'PDF of Unif({}, {})'.format(loc, loc+scale))
     ax.legend(loc='best', frameon=False)
     plt.show()
+
+# uniform_distribution(loc=2, scale=4)
+
+
+def exponential_dis(loc=0, scale=1.0):
