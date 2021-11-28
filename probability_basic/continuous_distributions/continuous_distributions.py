@@ -41,3 +41,6 @@ def uniform_distribution(loc=0, scale=1):
 
 
 def exponential_dis(loc=0, scale=1.0):
+    """
+    指数分布，exponential continuous random variable
+    按照定义，指数分布只有一个参数lambda
