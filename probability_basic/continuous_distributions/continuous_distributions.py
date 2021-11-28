@@ -33,4 +33,6 @@ def uniform_distribution(loc=0, scale=1):
     r = uniform_dis.rvs(size=10000)
     ax.hist(r, normed=True, histtype='stepfilled', alpha=0.2)
     plt.ylabel('Probability')
-    plt.title(r'PDF of Un
+    plt.title(r'PDF of Unif({}, {})'.format(loc, loc+scale))
+    ax.legend(loc='best', frameon=False)
+    plt.show()
