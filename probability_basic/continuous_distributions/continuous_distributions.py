@@ -43,4 +43,6 @@ def uniform_distribution(loc=0, scale=1):
 def exponential_dis(loc=0, scale=1.0):
     """
     指数分布，exponential continuous random variable
-    按照定义，指数分布只有一个参数lambda
+    按照定义，指数分布只有一个参数lambda，这里的scale = 1/lambda
+    :param loc: 定义域的左端点，相当于将整体分布沿x轴平移loc
+    :param scale: lambda的倒数，loc + scale表
