@@ -49,4 +49,5 @@ def exponential_dis(loc=0, scale=1.0):
     :return:
     """
     exp_dis = stats.expon(loc=loc, scale=scale)
-    x 
+    x = np.linspace(exp_dis.ppf(0.000001),
+                    exp_dis.ppf(0
