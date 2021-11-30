@@ -58,3 +58,5 @@ def exponential_dis(loc=0, scale=1.0):
             lw=5, alpha=0.6, label='uniform pdf')
 
     # 从冻结的均匀分布取值
+    ax.plot(x, exp_dis.pdf(x), 'k-',
+            lw=2, label='frozen pdf')
