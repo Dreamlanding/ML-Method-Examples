@@ -50,4 +50,8 @@ def exponential_dis(loc=0, scale=1.0):
     """
     exp_dis = stats.expon(loc=loc, scale=scale)
     x = np.linspace(exp_dis.ppf(0.000001),
-                    exp_dis.ppf(0
+                    exp_dis.ppf(0.999999), 100)
+    fig, ax = plt.subplots(1, 1)
+
+    # 直接传入参数
+    ax.plot(x, stats.expon.pdf(x,
