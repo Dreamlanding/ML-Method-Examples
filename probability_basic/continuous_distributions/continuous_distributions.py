@@ -54,4 +54,7 @@ def exponential_dis(loc=0, scale=1.0):
     fig, ax = plt.subplots(1, 1)
 
     # 直接传入参数
-    ax.plot(x, stats.expon.pdf(x,
+    ax.plot(x, stats.expon.pdf(x, loc=loc, scale=scale), 'r-',
+            lw=5, alpha=0.6, label='uniform pdf')
+
+    # 从冻结的均匀分布取值
