@@ -60,3 +60,6 @@ def exponential_dis(loc=0, scale=1.0):
     # 从冻结的均匀分布取值
     ax.plot(x, exp_dis.pdf(x), 'k-',
             lw=2, label='frozen pdf')
+
+    # 计算ppf分别等于0.001, 0.5, 0.999时的x值
+    vals = exp_dis.ppf([0.001, 0.
