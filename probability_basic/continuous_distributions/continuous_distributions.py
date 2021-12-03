@@ -65,4 +65,7 @@ def exponential_dis(loc=0, scale=1.0):
     vals = exp_dis.ppf([0.001, 0.5, 0.999])
     print(vals)  # [ 2.004  4.     5.996]
 
-    # Check accuracy of 
+    # Check accuracy of cdf and ppf
+    print(np.allclose([0.001, 0.5, 0.999], exp_dis.cdf(vals)))
+
+    r = exp_dis.r
