@@ -70,4 +70,7 @@ def exponential_dis(loc=0, scale=1.0):
 
     r = exp_dis.rvs(size=10000)
     ax.hist(r, normed=True, histtype='stepfilled', alpha=0.2)
-    plt.ylabel('
+    plt.ylabel('Probability')
+    plt.title(r'PDF of Exp(0.5)')
+    ax.legend(loc='best', frameon=False)
+    
