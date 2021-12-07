@@ -68,4 +68,6 @@ def exponential_dis(loc=0, scale=1.0):
     # Check accuracy of cdf and ppf
     print(np.allclose([0.001, 0.5, 0.999], exp_dis.cdf(vals)))
 
-    r = exp_dis.r
+    r = exp_dis.rvs(size=10000)
+    ax.hist(r, normed=True, histtype='stepfilled', alpha=0.2)
+    plt.ylabel('
