@@ -73,4 +73,11 @@ def exponential_dis(loc=0, scale=1.0):
     plt.ylabel('Probability')
     plt.title(r'PDF of Exp(0.5)')
     ax.legend(loc='best', frameon=False)
-    
+    plt.show()
+
+# exponential_dis(loc=0, scale=2)
+
+
+def diff_exp_dis():
+    """
+ 
