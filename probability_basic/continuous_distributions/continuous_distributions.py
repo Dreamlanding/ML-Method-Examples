@@ -83,4 +83,8 @@ def diff_exp_dis():
     不同参数下的指数分布
     :return:
     """
-    exp_dis_0_5 = stats.expon(scale
+    exp_dis_0_5 = stats.expon(scale=0.5)
+    exp_dis_1 = stats.expon(scale=1)
+    exp_dis_2 = stats.expon(scale=2)
+
+    x1 = n
