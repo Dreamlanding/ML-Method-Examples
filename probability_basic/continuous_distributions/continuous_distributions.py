@@ -80,4 +80,7 @@ def exponential_dis(loc=0, scale=1.0):
 
 def diff_exp_dis():
     """
- 
+    不同参数下的指数分布
+    :return:
+    """
+    exp_dis_0_5 = stats.expon(scale
