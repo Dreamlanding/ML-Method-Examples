@@ -88,4 +88,5 @@ def diff_exp_dis():
     exp_dis_2 = stats.expon(scale=2)
 
     x1 = np.linspace(exp_dis_0_5.ppf(0.001), exp_dis_0_5.ppf(0.9999), 100)
-    x2 = np.li
+    x2 = np.linspace(exp_dis_1.ppf(0.001), exp_dis_1.ppf(0.999), 100)
+    x3 = np.linspace(exp_dis_2.ppf(0.0
