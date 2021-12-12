@@ -91,4 +91,5 @@ def diff_exp_dis():
     x2 = np.linspace(exp_dis_1.ppf(0.001), exp_dis_1.ppf(0.999), 100)
     x3 = np.linspace(exp_dis_2.ppf(0.001), exp_dis_2.ppf(0.99), 100)
     fig, ax = plt.subplots(1, 1)
-    ax.plot(x1, exp_
+    ax.plot(x1, exp_dis_0_5.pdf(x1), 'b-', lw=2, label=r'lambda = 2')
+    ax.plot(x2, exp_dis_1.pdf(x2), 'g-',
