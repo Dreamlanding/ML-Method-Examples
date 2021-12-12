@@ -93,4 +93,6 @@ def diff_exp_dis():
     fig, ax = plt.subplots(1, 1)
     ax.plot(x1, exp_dis_0_5.pdf(x1), 'b-', lw=2, label=r'lambda = 2')
     ax.plot(x2, exp_dis_1.pdf(x2), 'g-', lw=2, label='lambda = 1')
-    ax.plot(x3, exp_dis_2.pdf(x3), 'r-', lw=2, label='lambda =
+    ax.plot(x3, exp_dis_2.pdf(x3), 'r-', lw=2, label='lambda = 0.5')
+    plt.ylabel('Probability')
+    plt.title(r'PDF of Exponential Distribution
