@@ -95,4 +95,11 @@ def diff_exp_dis():
     ax.plot(x2, exp_dis_1.pdf(x2), 'g-', lw=2, label='lambda = 1')
     ax.plot(x3, exp_dis_2.pdf(x3), 'r-', lw=2, label='lambda = 0.5')
     plt.ylabel('Probability')
-    plt.title(r'PDF of Exponential Distribution
+    plt.title(r'PDF of Exponential Distribution')
+    ax.legend(loc='best', frameon=False)
+    plt.show()
+
+# diff_exp_dis()
+
+
+def normal_dis(miu=0
