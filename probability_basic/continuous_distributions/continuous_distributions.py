@@ -108,4 +108,6 @@ def normal_dis(miu=0, sigma=1):
     :param miu: 均值
     :param sigma: 标准差
     :return:
-    ""
+    """
+
+    norm_dis = stats.norm(miu, sigma)  # 利用相应的分布函数及参数，创建一个冻结的正态分布(froze
