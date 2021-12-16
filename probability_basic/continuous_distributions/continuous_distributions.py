@@ -102,4 +102,10 @@ def diff_exp_dis():
 # diff_exp_dis()
 
 
-def normal_dis(miu=0
+def normal_dis(miu=0, sigma=1):
+    """
+    正态分布有两个参数
+    :param miu: 均值
+    :param sigma: 标准差
+    :return:
+    ""
