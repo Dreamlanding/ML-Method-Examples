@@ -113,4 +113,8 @@ def normal_dis(miu=0, sigma=1):
     norm_dis = stats.norm(miu, sigma)  # 利用相应的分布函数及参数，创建一个冻结的正态分布(frozen distribution)
     x = np.linspace(-5, 15, 101)  # 在区间[-5, 15]上均匀的取101个点
 
-    # 计算该分布在x
+    # 计算该分布在x中个点的概率密度分布函数值(PDF)
+    pdf = norm_dis.pdf(x)
+
+    # 计算该分布在x中个点的累计分布函数值(CDF)
+    cdf = n
