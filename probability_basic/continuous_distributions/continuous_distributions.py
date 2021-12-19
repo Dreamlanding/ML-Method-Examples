@@ -117,4 +117,9 @@ def normal_dis(miu=0, sigma=1):
     pdf = norm_dis.pdf(x)
 
     # 计算该分布在x中个点的累计分布函数值(CDF)
-    cdf = n
+    cdf = norm_dis.cdf(x)
+
+    # 下面是利用matplotlib画图
+    plt.figure(1)
+    # plot pdf
+    plt
