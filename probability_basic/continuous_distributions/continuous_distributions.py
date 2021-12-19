@@ -124,4 +124,6 @@ def normal_dis(miu=0, sigma=1):
     # plot pdf
     plt.subplot(211)  # 两行一列，第一个子图
     plt.plot(x, pdf, 'b-',  label='pdf')
-    plt.ylabel('Probability'
+    plt.ylabel('Probability')
+    plt.title(r'PDF/CDF of normal distribution')
+    plt.text(-5.0, .12, r'$\mu
