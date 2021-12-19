@@ -122,4 +122,6 @@ def normal_dis(miu=0, sigma=1):
     # 下面是利用matplotlib画图
     plt.figure(1)
     # plot pdf
-    plt
+    plt.subplot(211)  # 两行一列，第一个子图
+    plt.plot(x, pdf, 'b-',  label='pdf')
+    plt.ylabel('Probability'
