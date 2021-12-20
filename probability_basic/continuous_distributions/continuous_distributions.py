@@ -126,4 +126,7 @@ def normal_dis(miu=0, sigma=1):
     plt.plot(x, pdf, 'b-',  label='pdf')
     plt.ylabel('Probability')
     plt.title(r'PDF/CDF of normal distribution')
-    plt.text(-5.0, .12, r'$\mu
+    plt.text(-5.0, .12, r'$\mu={},\ \sigma={}$'.format(miu, sigma))  # 3是标准差，不是方差
+    plt.legend(loc='best', frameon=False)
+    # plot cdf
+    pl
