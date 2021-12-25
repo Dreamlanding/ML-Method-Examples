@@ -132,4 +132,11 @@ def normal_dis(miu=0, sigma=1):
     plt.subplot(212)
     plt.plot(x, cdf, 'r-', label='cdf')
     plt.ylabel('Probability')
-   
+    plt.legend(loc='best', frameon=False)
+
+    plt.show()
+
+# normal_dis(miu=5, sigma=3)
+
+
+def diff
