@@ -139,4 +139,9 @@ def normal_dis(miu=0, sigma=1):
 # normal_dis(miu=5, sigma=3)
 
 
-def diff
+def diff_normal_dis():
+    """
+    不同参数下的指数分布
+    :return:
+    """
+    norm_dis_0 = stats.norm(0,
