@@ -144,4 +144,7 @@ def diff_normal_dis():
     不同参数下的指数分布
     :return:
     """
-    norm_dis_0 = stats.norm(0,
+    norm_dis_0 = stats.norm(0, 1)  # 标准正态分布
+    norm_dis_1 = stats.norm(0, 0.5)  # 标准正态分布
+    norm_dis_2 = stats.norm(0, 2)  # 标准正态分布
+    
