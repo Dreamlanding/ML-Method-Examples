@@ -147,4 +147,6 @@ def diff_normal_dis():
     norm_dis_0 = stats.norm(0, 1)  # 标准正态分布
     norm_dis_1 = stats.norm(0, 0.5)  # 标准正态分布
     norm_dis_2 = stats.norm(0, 2)  # 标准正态分布
-    
+    norm_dis_3 = stats.norm(2, 2)  # 标准正态分布
+
+    x0 = np.linspace(norm_dis_0.pp
