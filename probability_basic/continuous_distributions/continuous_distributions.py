@@ -156,4 +156,5 @@ def diff_normal_dis():
     fig, ax = plt.subplots(1, 1)
     ax.plot(x0, norm_dis_0.pdf(x0), 'r-', lw=2, label=r'miu=0, sigma=1')
     ax.plot(x1, norm_dis_1.pdf(x1), 'b-', lw=2, label=r'miu=0, sigma=0.5')
-    ax.plot(x2, norm_dis_2.p
+    ax.plot(x2, norm_dis_2.pdf(x2), 'g-', lw=2, label=r'miu=0, sigma=2')
+    ax.plot(x3, norm_dis_3.pdf(x3), 'y-'
