@@ -159,4 +159,8 @@ def diff_normal_dis():
     ax.plot(x2, norm_dis_2.pdf(x2), 'g-', lw=2, label=r'miu=0, sigma=2')
     ax.plot(x3, norm_dis_3.pdf(x3), 'y-', lw=2, label=r'miu=2, sigma=2')
     plt.ylabel('Probability')
-    plt.title(r'PDF of Normal
+    plt.title(r'PDF of Normal Distribution')
+    ax.legend(loc='best', frameon=False)
+    plt.show()
+
+diff_normal_dis(
