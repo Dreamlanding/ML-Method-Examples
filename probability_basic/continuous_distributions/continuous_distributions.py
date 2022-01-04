@@ -163,4 +163,4 @@ def diff_normal_dis():
     ax.legend(loc='best', frameon=False)
     plt.show()
 
-diff_normal_dis(
+diff_normal_dis()
