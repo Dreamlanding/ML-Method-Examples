@@ -5,4 +5,8 @@ import numpy as np
 
 
 def calculate_Q1():
-    all_result = [(a, b, c) for a in [1, 2, 3
+    all_result = [(a, b, c) for a in [1, 2, 3, 4, 5]
+     for b in [1, 2, 3, 4, 5]
+     for c in [1, 2, 3, 4, 5]]
+
+    all_s
