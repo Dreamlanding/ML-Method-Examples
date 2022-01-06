@@ -9,4 +9,6 @@ def calculate_Q1():
      for b in [1, 2, 3, 4, 5]
      for c in [1, 2, 3, 4, 5]]
 
-    all_s
+    all_sum = [sum(x) for x in all_result]
+
+    val, count = np.unique(all_sum, return_coun
