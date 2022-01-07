@@ -16,4 +16,5 @@ def calculate_Q1():
 
     pmf = count/len(all_sum)
     print(pmf)
-    print(np.multiply(np.array
+    print(np.multiply(np.array(val), np.array(pmf)))
+    E = np.sum(np.multiply(np.array(val), np.array
