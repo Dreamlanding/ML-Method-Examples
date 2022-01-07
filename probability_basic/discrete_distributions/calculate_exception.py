@@ -11,4 +11,9 @@ def calculate_Q1():
 
     all_sum = [sum(x) for x in all_result]
 
-    val, count = np.unique(all_sum, return_coun
+    val, count = np.unique(all_sum, return_counts=True)
+    print(val, count)
+
+    pmf = count/len(all_sum)
+    print(pmf)
+    print(np.multiply(np.array
