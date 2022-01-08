@@ -16,4 +16,9 @@ def example1():
     myDF = stats.norm(5, 3)  # Create the frozen distribution
     # 取101个等间距的x
     X = np.linspace(-5, 15, 101)
-    # cdf, 累计分
+    # cdf, 累计分布函数
+    y = myDF.cdf(X)  # Calculate the corresponding CDF
+    plt.plot(X, y)
+
+
+def bernoulli_distribution
