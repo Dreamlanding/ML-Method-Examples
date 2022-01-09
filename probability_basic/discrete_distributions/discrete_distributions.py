@@ -21,4 +21,8 @@ def example1():
     plt.plot(X, y)
 
 
-def bernoulli_distribution
+def bernoulli_distribution():
+    # 伯努利分布
+    # 只有一个参数：p，实验成功的概率
+    p = 0.6
+    bernoulli_dist = stats.
