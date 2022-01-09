@@ -25,4 +25,7 @@ def bernoulli_distribution():
     # 伯努利分布
     # 只有一个参数：p，实验成功的概率
     p = 0.6
-    bernoulli_dist = stats.
+    bernoulli_dist = stats.bernoulli(p)
+
+    # 伯努利分布的概率质量分布函数pmf
+    p_heads = bernoulli_dist.pmf(1)  # 试验结果为1的概率, 规定为正面,
