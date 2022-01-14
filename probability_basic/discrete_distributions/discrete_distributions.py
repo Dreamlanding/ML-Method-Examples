@@ -31,4 +31,7 @@ def bernoulli_distribution():
     p_heads = bernoulli_dist.pmf(1)  # 试验结果为1的概率, 规定为正面, 概率为0.6
     p_tails = bernoulli_dist.pmf(0)  # 试验结果为0的概率, 规定为反面, 概率为0.4
 
-    # 取100个服从参数为0.6
+    # 取100个服从参数为0.6的伯努利分布的随机变量
+    trials = bernoulli_dist.rvs(100)
+
+    print(np.sum(trials)) 
