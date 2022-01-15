@@ -34,4 +34,7 @@ def bernoulli_distribution():
     # 取100个服从参数为0.6的伯努利分布的随机变量
     trials = bernoulli_dist.rvs(100)
 
-    print(np.sum(trials)) 
+    print(np.sum(trials))  # 63, 相当于1的个数
+
+    # 100个随机变量的直方图, 相当于取出来的100个随机变量的概率质量分布
+    plt.hist(trials/len
