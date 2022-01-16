@@ -37,4 +37,9 @@ def bernoulli_distribution():
     print(np.sum(trials))  # 63, 相当于1的个数
 
     # 100个随机变量的直方图, 相当于取出来的100个随机变量的概率质量分布
-    plt.hist(trials/len
+    plt.hist(trials/len(trials))
+    # plt.show()
+    plt.savefig('bernoulli_pmf.png', dpi=200)
+    plt.close()
+
+    # 0-2
