@@ -42,4 +42,7 @@ def bernoulli_distribution():
     plt.savefig('bernoulli_pmf.png', dpi=200)
     plt.close()
 
-    # 0-2
+    # 0-2之间均匀的取100个点
+    x = np.linspace(0, 2, 100)
+
+    cdf = bernoulli_dist.cdf  # 相当于取出来的100
