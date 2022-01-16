@@ -49,4 +49,11 @@ def bernoulli_distribution():
 
     plt.plot(x, cdf(x))  # 上述伯努利分布在区间[0, 2]上的cdf图像
     # plt.show()
-    plt.savefig('bernoulli
+    plt.savefig('bernoulli_cdf.png', dpi=200)
+    plt.close()
+
+
+def binom_dis(n=1, p=0.1):
+    """
+    二项分布，模拟抛硬币试验
+    
