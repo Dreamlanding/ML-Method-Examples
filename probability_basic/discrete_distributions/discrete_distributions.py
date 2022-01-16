@@ -45,4 +45,8 @@ def bernoulli_distribution():
     # 0-2之间均匀的取100个点
     x = np.linspace(0, 2, 100)
 
-    cdf = bernoulli_dist.cdf  # 相当于取出来的100
+    cdf = bernoulli_dist.cdf  # 相当于取出来的100个随机变量的累积分布函数(cdf)
+
+    plt.plot(x, cdf(x))  # 上述伯努利分布在区间[0, 2]上的cdf图像
+    # plt.show()
+    plt.savefig('bernoulli
