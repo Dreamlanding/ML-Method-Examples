@@ -56,4 +56,8 @@ def bernoulli_distribution():
 def binom_dis(n=1, p=0.1):
     """
     二项分布，模拟抛硬币试验
-    
+    :param n: 实验总次数
+    :param p: 单次实验成功的概率
+    :return: 试验成功的次数
+    """
+    binom_dis = stats.
