@@ -60,4 +60,6 @@ def binom_dis(n=1, p=0.1):
     :param p: 单次实验成功的概率
     :return: 试验成功的次数
     """
-    binom_dis = stats.
+    binom_dis = stats.binom(n, p)
+    simulation_result = binom_dis.rvs(size=5)  # 取20个符合该分布的随机变量
+    print(simulation_result)  # [ 7
