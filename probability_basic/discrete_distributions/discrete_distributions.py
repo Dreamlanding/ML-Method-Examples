@@ -62,4 +62,10 @@ def binom_dis(n=1, p=0.1):
     """
     binom_dis = stats.binom(n, p)
     simulation_result = binom_dis.rvs(size=5)  # 取20个符合该分布的随机变量
-    print(simulation_result)  # [ 7
+    print(simulation_result)  # [ 7 11 13  8 13], 每次结果会不一样
+    prob_10 = binom_dis.pmf(10)
+    print(prob_10)  # 0.117
+
+
+
+def pois
