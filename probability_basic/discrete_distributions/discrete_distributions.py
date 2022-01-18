@@ -68,4 +68,9 @@ def binom_dis(n=1, p=0.1):
 
 
 
-def pois
+def poisson_dis(mu=3.0):
+    """
+    泊松分布
+    :param mu: 单位时间（或单位面积）内随机事件的平均发生率
+    :return:
+    
