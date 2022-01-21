@@ -73,4 +73,8 @@ def poisson_dis(mu=3.0):
     泊松分布
     :param mu: 单位时间（或单位面积）内随机事件的平均发生率
     :return:
-    
+    """
+    mu = 2
+    poisson_dist = stats.poisson(mu)
+    X2 = np.arange(5)
+ 
