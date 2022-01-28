@@ -77,4 +77,6 @@ def poisson_dis(mu=3.0):
     mu = 2
     poisson_dist = stats.poisson(mu)
     X2 = np.arange(5)
- 
+    x_prob2 = poisson_dist.pmf(X2)
+    plt.plot(X2, x_prob2)
+    poisson_dist.p
