@@ -85,4 +85,6 @@ def poisson_dis(mu=3.0):
 def compare_binom_poisson(mu=4, n1=8, n2=50):
     """
     二项分布与泊松分布的比较
-    :p
+    :param mu: 泊松分布的参数，保持mu不变
+    :param n1: 第一个二项分布中的实验次数，n比较小
+    :param n2: 第
