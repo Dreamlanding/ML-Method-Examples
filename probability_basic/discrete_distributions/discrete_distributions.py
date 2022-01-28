@@ -79,4 +79,10 @@ def poisson_dis(mu=3.0):
     X2 = np.arange(5)
     x_prob2 = poisson_dist.pmf(X2)
     plt.plot(X2, x_prob2)
-    poisson_dist.p
+    poisson_dist.pmf(3)  # 0.18, 恰好发生3次的概率
+
+
+def compare_binom_poisson(mu=4, n1=8, n2=50):
+    """
+    二项分布与泊松分布的比较
+    :p
