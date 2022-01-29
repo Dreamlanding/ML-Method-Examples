@@ -91,4 +91,6 @@ def compare_binom_poisson(mu=4, n1=8, n2=50):
     :return:
     """
     # 为了具有可比性, 利用mu = n * p, 计算p
-    p1 = mu
+    p1 = mu/n1  # 二项分布中的参数，单次实验成功的概率
+    p2 = mu/n2
+    poisson_dist = stats.poisson(
