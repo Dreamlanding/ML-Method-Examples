@@ -87,4 +87,8 @@ def compare_binom_poisson(mu=4, n1=8, n2=50):
     二项分布与泊松分布的比较
     :param mu: 泊松分布的参数，保持mu不变
     :param n1: 第一个二项分布中的实验次数，n比较小
-    :param n2: 第
+    :param n2: 第二个二项分布中的实验次数，n比较大
+    :return:
+    """
+    # 为了具有可比性, 利用mu = n * p, 计算p
+    p1 = mu
