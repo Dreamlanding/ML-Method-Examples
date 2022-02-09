@@ -98,4 +98,8 @@ def compare_binom_poisson(mu=4, n1=8, n2=50):
     binom_dist2 = stats.binom(n2, p2)  # 初始化第二个二项分布
 
     # 计算pmf
-    X = np.arange(poisson_dist.ppf(0.0001), pois
+    X = np.arange(poisson_dist.ppf(0.0001), poisson_dist.ppf(0.9999))
+    y_po = poisson_dist.pmf(X)
+    print(X)
+    print(y_po)
+    y
