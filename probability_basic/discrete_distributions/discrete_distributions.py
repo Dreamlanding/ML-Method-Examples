@@ -102,4 +102,9 @@ def compare_binom_poisson(mu=4, n1=8, n2=50):
     y_po = poisson_dist.pmf(X)
     print(X)
     print(y_po)
-    y
+    y_bi1 = binom_dist1.pmf(X)
+    y_bi2 = binom_dist2.pmf(X)
+
+    # 作图
+    # First group
+    #
