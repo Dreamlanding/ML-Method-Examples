@@ -95,4 +95,7 @@ def compare_binom_poisson(mu=4, n1=8, n2=50):
     p2 = mu/n2
     poisson_dist = stats.poisson(mu)  # 初始化泊松分布
     binom_dist1 = stats.binom(n1, p1)  # 初始化第一个二项分布
-    binom_dist2 = stats.b
+    binom_dist2 = stats.binom(n2, p2)  # 初始化第二个二项分布
+
+    # 计算pmf
+    X = np.arange(poisson_dist.ppf(0.0001), pois
