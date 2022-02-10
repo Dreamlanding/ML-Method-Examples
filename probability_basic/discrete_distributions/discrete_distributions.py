@@ -110,4 +110,5 @@ def compare_binom_poisson(mu=4, n1=8, n2=50):
     # 当n比较小，p比较大时，两者差别比较大
     plt.figure(1)
     plt.subplot(211)
-    plt.plot(X, y_bi1, 'b-', la
+    plt.plot(X, y_bi1, 'b-', label='binom1 (n={}, p={})'.format(n1, p1))
+    plt.plot(X, y_po, 'r--', label='poisson (m
