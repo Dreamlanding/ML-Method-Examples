@@ -111,4 +111,6 @@ def compare_binom_poisson(mu=4, n1=8, n2=50):
     plt.figure(1)
     plt.subplot(211)
     plt.plot(X, y_bi1, 'b-', label='binom1 (n={}, p={})'.format(n1, p1))
-    plt.plot(X, y_po, 'r--', label='poisson (m
+    plt.plot(X, y_po, 'r--', label='poisson (mu={})'.format(mu))
+    plt.ylabel('Probability')
+    plt.title('Comparing PMF of Poi
