@@ -107,4 +107,7 @@ def compare_binom_poisson(mu=4, n1=8, n2=50):
 
     # 作图
     # First group
-    #
+    # 当n比较小，p比较大时，两者差别比较大
+    plt.figure(1)
+    plt.subplot(211)
+    plt.plot(X, y_bi1, 'b-', la
