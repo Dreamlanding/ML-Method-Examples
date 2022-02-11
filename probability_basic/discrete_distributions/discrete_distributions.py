@@ -119,4 +119,6 @@ def compare_binom_poisson(mu=4, n1=8, n2=50):
     # second group
     # 当n比较大，p比较小时，两者非常相似
     plt.subplot(212)
-    plt.plot(X, y_bi2, 'b-', label='binom1 (n={}, p=
+    plt.plot(X, y_bi2, 'b-', label='binom1 (n={}, p={})'.format(n2, p2))
+    plt.plot(X, y_po, 'r--', label='poisson (mu={})'.format(mu))
+   
