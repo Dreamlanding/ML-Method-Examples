@@ -125,3 +125,8 @@ def compare_binom_poisson(mu=4, n1=8, n2=50):
     plt.legend(loc='best', frameon=False)
     plt.show()
 
+
+if __name__ == '__main__':
+    # bernoulli_distribution()
+    # binom_dis(20, 0.5)
+    
