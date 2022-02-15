@@ -45,3 +45,69 @@ def binom_pmf(n=1, p=0.1):
 
 # binom_pmf(n=20, p=0.6)
 
+
+def poisson_pmf(mu=3):
+    """
+    泊松分布
+    https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.poisson.html#scipy.stats.poisson
+    :param mu: 单位时间（或单位面积）内随机事件的平均发生率
+    :return:
+    """
+    poisson_dis = stats.poisson(mu)
+    x = np.arange(poisson_dis.ppf(0.001), poisson_dis.ppf(0.999))
+    print(x)
+    fig, ax = plt.subplots(1, 1)
+    ax.plot(x, poisson_dis.pmf(x), 'bo', ms=8, label='poisson pmf')
+    ax.vlines(x, 0, poisson_dis.pmf(x), colors='b', lw=5, alpha=0.5)
+    ax.legend(loc='best', frameon=False)
+    plt.ylabel('Probability')
+    plt.title('PMF of poisson distribution(mu={})'.format(mu))
+    plt.show()
+
+# poisson_pmf(mu=8)
+
+
+def plot_bar():
+    y = [1, 2, 3, 4, 5]
+    x_name = ['apple', 'orange', 'pear', 'mango', 'peach']
+    x = np.arange(len(x_name))
+    plt.bar(x, y)
+    plt.xticks(x, x_name)
+    plt.show()
+
+# plot_bar()
+
+
+def custom_made_discrete_dis_pmf():
+    """
+    https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_discrete.html
+    :return:
+    """
+    xk = np.arange(7)  # 所有可能的取值
+    print(xk)  # [0 1 2 3 4 5 6]
+    pk = (0.1, 0.2, 0.3, 0.1, 0.1, 0.0, 0.2)  # 各个取值的概率
+    custm = stats.rv_discrete(name='custm', values=(xk, pk))
+
+    X = custm.rvs(size=20)
+    print(X)
+
+    fig, ax = plt.subplots(1, 1)
+    ax.plot(xk, custm.pmf(xk), 'ro', ms=8, mec='r')
+    ax.vlines(xk, 0, custm.pmf(xk), colors='r', linestyles='-', lw=2)
+    plt.title('Custom made discrete distribution(PMF)')
+    plt.ylabel('Probability')
+    plt.show()
+
+# custom_made_discrete_dis_pmf()
+
+
+def sampling_and_empirical_dis():
+    xk = np.arange(7)  # 所有可能的取值
+    print(xk)  # [0 1 2 3 4 5 6]
+    pk = (0.1, 0.2, 0.3, 0.1, 0.1, 0.0, 0.2)  # 各个取值的概率
+    custm = stats.rv_discrete(name='custm', values=(xk, pk))
+
+    X1 = custm.rvs(size=20)  # 第一次抽样
+    X2 = custm.rvs(size=200)  # 第二次抽样
+    # 计算X1＆X2中各个结果出现的频率(相当于PMF)
+    val1, cnt1 = np.unique(X1, return_counts=True)
