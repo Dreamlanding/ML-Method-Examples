@@ -12,4 +12,9 @@ def calculate_t_score():
     alpha = 0.05
     t_score = stats.t(df).isf(alpha/2)  # 相当于计算t_0.025, 上0.025分位数
     print(t_score)
-calculate_t_score()  # 2.09302
+calculate_t_score()  # 2.09302405441
+
+
+def calculate_ci(ci_value, data):
+    """
+    calculate (ci value%)-confidenc
