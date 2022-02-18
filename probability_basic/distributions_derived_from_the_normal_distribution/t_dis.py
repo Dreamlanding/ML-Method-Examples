@@ -10,4 +10,6 @@ def calculate_t_score():
     n = 20
     df = n - 1  # 自由度
     alpha = 0.05
-    t_score = stats.t(df).isf(alpha
+    t_score = stats.t(df).isf(alpha/2)  # 相当于计算t_0.025, 上0.025分位数
+    print(t_score)
+calculate_t_score()  # 2.09302
