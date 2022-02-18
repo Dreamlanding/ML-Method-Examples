@@ -17,4 +17,6 @@ calculate_t_score()  # 2.09302405441
 
 def calculate_ci(ci_value, data):
     """
-    calculate (ci value%)-confidenc
+    calculate (ci value%)-confidence interval(CI)
+    :param ci_value: confidence coefficient (0, 1)
+    :param dat
