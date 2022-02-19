@@ -20,4 +20,7 @@ def calculate_ci(ci_value, data):
     calculate (ci value%)-confidence interval(CI)
     :param ci_value: confidence coefficient (0, 1)
     :param data: an array
-    :return: confidence interval with confidence coefficient of ci_va
+    :return: confidence interval with confidence coefficient of ci_value
+    """
+    df = len(data) - 1  # degrees of freedom
+    ci = stats.t.interval(ci_value, df
