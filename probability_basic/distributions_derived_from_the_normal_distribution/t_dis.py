@@ -19,4 +19,5 @@ def calculate_ci(ci_value, data):
     """
     calculate (ci value%)-confidence interval(CI)
     :param ci_value: confidence coefficient (0, 1)
-    :param dat
+    :param data: an array
+    :return: confidence interval with confidence coefficient of ci_va
