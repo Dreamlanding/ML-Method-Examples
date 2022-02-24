@@ -23,4 +23,7 @@ def calculate_ci(ci_value, data):
     :return: confidence interval with confidence coefficient of ci_value
     """
     df = len(data) - 1  # degrees of freedom
-    ci = stats.t.interval(ci_value, df
+    ci = stats.t.interval(ci_value, df, loc=np.mean(data),
+                          scale=stats.sem(data))
+    return ci
+norm_dis = stats.no
