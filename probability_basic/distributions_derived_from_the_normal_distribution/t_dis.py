@@ -26,4 +26,8 @@ def calculate_ci(ci_value, data):
     ci = stats.t.interval(ci_value, df, loc=np.mean(data),
                           scale=stats.sem(data))
     return ci
-norm_dis = stats.no
+norm_dis = stats.norm(0, 2)
+demo_data1 = norm_dis.rvs(10)
+print(demo_data1)
+alpha2 = 0.95
+# (-0.2217121415878
