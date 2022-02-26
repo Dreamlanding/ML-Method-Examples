@@ -30,4 +30,8 @@ norm_dis = stats.norm(0, 2)
 demo_data1 = norm_dis.rvs(10)
 print(demo_data1)
 alpha2 = 0.95
-# (-0.2217121415878
+# (-0.2217121415878075, 1.7026114809498547)
+print(calculate_ci(alpha2, demo_data1))
+
+
+# standard deviat
