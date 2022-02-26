@@ -38,4 +38,6 @@ print(calculate_ci(alpha2, demo_data1))
 # SEM: 平均值标准误差
 a = [69, 54, 80]
 b = [47, 68, 52]
-print(n
+print(np.std(a), np.std(b))  # 样本的标准差
+print(stats.sem(a), stats.sem(b))  # 样本均值的标准差(对SEM的估计)
+# 10.65624490
