@@ -34,4 +34,8 @@ alpha2 = 0.95
 print(calculate_ci(alpha2, demo_data1))
 
 
-# standard deviat
+# standard deviation vs standard error of the mean(SEM)
+# SEM: 平均值标准误差
+a = [69, 54, 80]
+b = [47, 68, 52]
+print(n
