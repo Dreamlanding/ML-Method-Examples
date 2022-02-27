@@ -49,4 +49,7 @@ def calculate_p_value(data, ref_value):
     假设检验，计算p-value
     :param data:
     :param ref_value: 与data均值进行比较的参考值
-    :r
+    :return: p-value
+    """
+    t_val = (ref_value - np.mean(data)) / stats.sem(data)
+    t_dis
