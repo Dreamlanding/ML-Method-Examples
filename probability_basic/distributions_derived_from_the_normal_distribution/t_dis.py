@@ -44,4 +44,9 @@ print(stats.sem(a), stats.sem(b))  # 样本均值的标准差(对SEM的估计)
 # 7.53510303697 6.33333333333
 
 
-def calculate_p_value(data, ref_value)
+def calculate_p_value(data, ref_value):
+    """
+    假设检验，计算p-value
+    :param data:
+    :param ref_value: 与data均值进行比较的参考值
+    :r
