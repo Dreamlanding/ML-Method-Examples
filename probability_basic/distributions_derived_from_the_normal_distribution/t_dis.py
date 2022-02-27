@@ -52,4 +52,7 @@ def calculate_p_value(data, ref_value):
     :return: p-value
     """
     t_val = (ref_value - np.mean(data)) / stats.sem(data)
-    t_dis
+    t_dist = stats.t(len(data) - 1)
+    return 2*t_dist.sf(t_val)
+# 计算p值，t-test
+# 零假
