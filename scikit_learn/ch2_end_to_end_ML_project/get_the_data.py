@@ -115,3 +115,37 @@ housing.plot(kind='scatter', x='longitude', y='latitude', alpha=0.4,
              c='median_house_value', cmap=plt.get_cmap('jet'), colorbar=True)
 # plt.legend()
 # plt.show()
+corr_matrix = housing.corr()
+print(corr_matrix)
+print(corr_matrix['median_house_value'].sort_values(ascending=False))
+
+#  - figure 2-15. Scatter matrix
+attributes = ['median_house_value', 'median_income', 'total_rooms', 'housing_median_age']
+scatter_matrix(housing[attributes], figsize=(12, 8))
+# plt.show()
+
+#  - figure 2-16. Median income versus median house value
+# housing.plot(kind='scatter', x='median_income', y='median_house_value', alpha=0.2)
+# plt.show()
+
+encoder_label = LabelEncoder()
+housing_cat = housing['ocean_proximity']
+housing_cat_encoded = encoder_label.fit_transform(housing_cat)  # 先转换成序号表示
+encoder_hot = OneHotEncoder()
+# the output is a SciPy sparse matrix
+housing_cat_1hot = encoder_hot.fit_transform(housing_cat_encoded.reshape(-1, 1))
+print(type(housing_cat_1hot))  # Compressed Sparse Row format
+print(housing_cat_1hot.toarray())  # one-hot 的形式, a dense NumPy array
+
+
+
+
+
+
+
+
+
+
+
+
+
