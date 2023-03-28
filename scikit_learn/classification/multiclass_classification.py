@@ -92,3 +92,25 @@ X_train_scaled = scaler.fit_transform(X_train.astype(np.float64))
 y_train_pred = cross_val_predict(forest_clf, X_train_scaled, y_train, cv=3)
 conf_mx = confusion_matrix(y_train, y_train_pred)
 self_print('confusion matrix')
+print(conf_mx)
+# plt.matshow(conf_mx)
+# plt.show()
+#--- plot normalized confusion matrix
+# row_sums = conf_mx.sum(axis=1, keepdims=True)
+# norm_conf_mx = conf_mx / row_sums
+# np.fill_diagonal(norm_conf_mx, 0)
+# plt.matshow(norm_conf_mx, cmap=plt.cm.gray)
+# plt.show()
+
+# 查看分错类的样本
+cl_a, cl_b = 3, 5
+X_aa = X_train[(y_train == cl_a) & (y_train_pred == cl_a)]
+X_ab = X_train[(y_train == cl_a) & (y_train_pred == cl_b)]
+X_ba = X_train[(y_train == cl_b) & (y_train_pred == cl_a)]
+X_bb = X_train[(y_train == cl_b) & (y_train_pred == cl_b)]
+plt.figure(figsize=(8, 8))
+plt.subplot(221); plot_digits(X_aa[:25], images_per_row=5)
+plt.subplot(222); plot_digits(X_ab[:25], images_per_row=5)
+plt.subplot(223); plot_digits(X_ba[:25], images_per_row=5)
+plt.subplot(224); plot_digits(X_bb[:25], images_per_row=5)
+plt.show()
