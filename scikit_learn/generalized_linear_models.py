@@ -133,3 +133,20 @@ ax.set_xscale('log')
 ax.set_xlim(ax.get_xlim()[::-1])  # reverse axis
 plt.xlabel('alpha')
 plt.ylabel('weights')
+plt.title('Ridge coefficients as a function of the regularization')
+plt.axis('tight')
+plt.show()
+
+
+#---------- 使用交叉验证的方法选择正则化系数
+# generalized Cross-Validation
+# RidgeCV implements ridge regression with built-in cross-validation of the alpha parameter. 
+# The object works in the same way as GridSearchCV except that it defaults to Generalized Cross-Validation (GCV), an efficient form of leave-one-out cross-validation:
+# 没有交叉验证数据时，可以采用leave-one-out cross-validation
+from sklearn import linear_model
+reg = linear_model.RidgeCV(alphas=[0.1, 1.0, 10.0])
+reg.fit([[0, 0], [0, 0], [1, 1]], [0, .1, 1])       
+
+reg.alpha_  # 0.1
+reg.coef_  # array([ 0.44186047,  0.44186047])
+reg.intercept_  # 0.072093023255812183
