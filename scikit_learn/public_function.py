@@ -2,4 +2,5 @@
 
 def self_print(a_str):
     prefix = '#---- '
-    suffix = '
+    suffix = ''.join([i for i in reversed(prefix)])
+    print(prefix + a_str + suffix)
