@@ -99,3 +99,91 @@ def sampling(z_mean, z_logsigma):
     # Define the reparameterization computation!
     # Note the equation is given in the text block immediately above.
     z = z_mean + tf.exp(0.5 * z_logsigma) * epsilon  # changed a little from the center of each sample
+    return z
+
+
+def debiasing_loss_function(x, x_pred, y, y_logit, mu, logsigma):
+    """Loss function for DB-VAE.
+    # Arguments
+        x: true input x
+        x_pred: reconstructed x
+        y: true label (face or not face)
+        y_logit: predicted labels
+        mu: mean of latent distribution (Q(z|X))
+        logsigma: log of standard deviation of latent distribution (Q(z|X))
+    # Returns
+        total_loss: DB-VAE total loss
+        classification_loss = DB-VAE classification loss
+    """
+    # call the relevant function to obtain VAE loss
+    vae_loss = vae_loss_function(x=x, x_recon=x_pred, mu=mu, logsigma=logsigma)
+
+    # define the classification loss using sigmoid_cross_entropy
+    # https://www.tensorflow.org/api_docs/python/tf/nn/sigmoid_cross_entropy_with_logits
+    classification_loss = tf.nn.sigmoid_cross_entropy_with_logits(labels=y, logits=y_logit)
+
+    # Use the training data labels to create variable face_indicator:
+    #   indicator that reflects which training data are images of faces
+    face_indicator = tf.cast(tf.equal(y, 1), tf.float32)
+
+    # define the DB-VAE total loss! Use tf.reduce_mean to average over all
+    # samples
+    total_loss = tf.reduce_mean(classification_loss + face_indicator * vae_loss)
+
+    return total_loss, classification_loss
+
+
+class DB_VAE(tf.keras.Model):
+    def __init__(self, latent_dim):
+        super(DB_VAE, self).__init__()
+        self.latent_dim = latent_dim
+
+        # Define the number of outputs for the encoder. Recall that we have
+        # `latent_dim` latent variables, as well as a supervised output for the
+        # classification (index 0).
+        num_encoder_dims = 2 * self.latent_dim + 1  # 2 * 100 + 1
+
+        self.encoder = make_standard_classifier(num_encoder_dims)
+        self.decoder = make_face_decoder_network()
+
+    # function to feed images into encoder, encode the latent space, and output
+    #   classification probability
+    def encode(self, x):
+        # encoder output
+        encoder_output = self.encoder(x)
+
+        # classification prediction
+        y_logit = tf.expand_dims(encoder_output[:, 0], -1)
+        # latent variable distribution parameters
+        z_mean = encoder_output[:, 1:self.latent_dim + 1]
+        z_logsigma = encoder_output[:, self.latent_dim + 1:]
+
+        return y_logit, z_mean, z_logsigma
+
+    # VAE reparameterization: given a mean and logsigma, sample latent variables
+    def reparameterize(self, z_mean, z_logsigma):
+        # call the sampling function defined above
+        z = sampling(z_mean=z_mean, z_logsigma=z_logsigma)
+        return z
+
+    # Decode the latent space and output reconstruction
+    def decode(self, z):
+        # use the decoder to output the reconstruction
+        reconstruction = self.decoder(z)  # how to pass z???
+        return reconstruction
+
+    # The call function will be used to pass inputs x through the core VAE
+    def call(self, x):
+        # Encode input to a prediction and latent space
+        y_logit, z_mean, z_logsigma = self.encode(x)
+
+        # reparameterization
+        z = self.reparameterize(z_mean=z_mean, z_logsigma=z_logsigma)
+
+        # reconstruction
+        recon = self.decode(z)
+        return y_logit, z_mean, z_logsigma, recon
+
+    # Predict face or not face logit for given input x
+    def predict(self, x):
+        y_logit, z_mean, z_logsigma = self.encode(x)
