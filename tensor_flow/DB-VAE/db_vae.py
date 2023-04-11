@@ -187,3 +187,83 @@ class DB_VAE(tf.keras.Model):
     # Predict face or not face logit for given input x
     def predict(self, x):
         y_logit, z_mean, z_logsigma = self.encode(x)
+        return y_logit
+
+
+def make_face_decoder_network(n_filters=12):
+    # Functionally define the different layer types we will use, the decoder portion of the DB-VAE
+    Conv2DTranspose = functools.partial(tf.keras.layers.Conv2DTranspose, padding='same', activation='relu')
+    BatchNormalization = tf.keras.layers.BatchNormalization
+    Flatten = tf.keras.layers.Flatten
+    Dense = functools.partial(tf.keras.layers.Dense, activation='relu')
+    Reshape = tf.keras.layers.Reshape
+
+    # Build the decoder network using the Sequential API
+    decoder = tf.keras.Sequential([
+        # Transform to pre-convolutional generation
+        Dense(units=4 * 4 * 6 * n_filters),  # 4x4 feature maps (with 6N occurances)
+        Reshape(target_shape=(4, 4, 6 * n_filters)),
+
+        # Upscaling convolutions (inverse of encoder)
+        Conv2DTranspose(filters=4 * n_filters, kernel_size=3, strides=2),
+        Conv2DTranspose(filters=2 * n_filters, kernel_size=3, strides=2),
+        Conv2DTranspose(filters=1 * n_filters, kernel_size=5, strides=2),
+        Conv2DTranspose(filters=3, kernel_size=5, strides=2),
+    ])
+
+    return decoder
+
+
+def get_latent_mu(images, dbvae, batch_size=1024):
+    # Function to return the means for an input image batch
+    N = images.shape[0]
+    mu = np.zeros((N, latent_dim))
+    for start_ind in range(0, N, batch_size):
+        end_ind = min(start_ind + batch_size, N + 1)
+        batch = (images[start_ind:end_ind]).astype(np.float32) / 255.
+        _, batch_mu, _ = dbvae.encode(batch)
+        mu[start_ind:end_ind] = batch_mu
+    return mu
+
+
+def get_training_sample_probabilities(images, dbvae, bins=10, smoothing_fac=0.001):
+    """Function that recomputes the sampling probabilities for images within a batch
+        based on how they distribute across the training data
+        Resampling algorithm for DB-VAE
+          """
+    print("Recomputing the sampling probabilities")
+
+    # run the input batch and get the latent variable means, dim[1:101], 54957 x 100
+    mu = get_latent_mu(images=images, dbvae=dbvae)
+
+    # sampling probabilities for the images
+    training_sample_p = np.zeros(mu.shape[0])
+    # find the highest density across all latent dimensions for each sample
+    # consider the distribution for each latent variable
+    for i in range(latent_dim):
+        latent_distribution = mu[:, i]
+        # generate a histogram of the latent distribution
+        hist_density, bin_edges = np.histogram(latent_distribution, density=True, bins=bins)
+
+        # find which latent bin every data sample falls in
+        bin_edges[0] = -float('inf')
+        bin_edges[-1] = float('inf')
+
+        # call the digitize function to find which bins in the latent distribution
+        #    every data sample falls in to
+        # https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.digitize.html
+        bin_idx = np.digitize(latent_distribution, bin_edges)
+
+        # smooth the density function
+        hist_smoothed_density = hist_density + smoothing_fac
+        hist_smoothed_density = hist_smoothed_density / np.sum(hist_smoothed_density)
+
+        # invert the density function, assign prob for each sample from 10 values, lower density becomes bigger number
+        p = 1.0 / (hist_smoothed_density[bin_idx - 1])
+
+        # normalize all probabilities, the group of samples which has lower density will be assigned higher prob, cool!
+        p = p / np.sum(p)
+
+        # update sampling probabilities by considering whether the newly
+        #     computed p is greater than the existing sampling probabilities.
+        training_sample_p = np.maximum(p, training_sample_p)
