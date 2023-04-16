@@ -360,3 +360,60 @@ if __name__ == '__main__':
     plt.title("Standard classifier predictions")
 
     ### Defining the VAE loss function ###
+    ### VAE Reparameterization ###
+    ### Defining and creating the DB-VAE ###
+
+    ### Training the DB-VAE ###
+
+    # Hyperparameters
+    batch_size = 32
+    learning_rate = 5e-4
+    latent_dim = 100
+
+    # DB-VAE needs slightly more epochs to train since its more complex than
+    # the standard classifier so we use 6 instead of 2
+    num_epochs = 6
+
+    # instantiate a new DB-VAE model and optimizer
+    # dbvae = DB_VAE(100)
+    optimizer = tf.keras.optimizers.Adam(learning_rate)
+
+    # get training faces from data loader
+    all_faces = loader.get_all_train_faces()  # only positive samples, 54957 x 64 x 64 x 3
+    dbvae = DB_VAE(latent_dim=latent_dim)
+
+    if hasattr(tqdm, '_instances'): tqdm._instances.clear()  # clear if it exists
+
+    # The training loop -- outer loop iterates over the number of epochs
+    for i in range(num_epochs):
+
+        IPython.display.clear_output(wait=True)
+        print("Starting epoch {}/{}".format(i + 1, num_epochs))
+
+        # Recompute data sampling proabilities
+        '''recompute the sampling probabilities for debiasing'''
+        # the probability of being a face for all images
+        p_faces = get_training_sample_probabilities(images=all_faces, dbvae=dbvae)
+
+        # get a batch of training data and compute the training step
+        for j in tqdm(range(loader.get_train_size() // batch_size)):
+            # load a batch of data
+            (x, y) = loader.get_batch(batch_size, p_pos=p_faces)  # also got some negative samples
+            # loss optimization
+            loss = debiasing_train_step(x, y, optimizer=optimizer, dbvae=dbvae)
+
+            # plot the progress every 200 steps
+            if j % 500 == 0:
+                mdl.util.plot_sample(x, y, dbvae)
+
+    dbvae_logits = [dbvae.predict(np.array(x, dtype=np.float32)) for x in test_faces]
+    dbvae_probs = tf.squeeze(tf.sigmoid(dbvae_logits))
+
+    xx = np.arange(len(keys))
+    plt.bar(xx, standard_classifier_probs.numpy().mean(1), width=0.2, label="Standard CNN")
+    plt.bar(xx + 0.2, dbvae_probs.numpy().mean(1), width=0.2, label="DB-VAE")
+    plt.xticks(xx, keys)
+    plt.title("Network predictions on test dataset")
+    plt.ylabel("Probability")
+    plt.legend(bbox_to_anchor=(1.04, 1), loc="upper left")
+    plt.show()
