@@ -267,3 +267,96 @@ def get_training_sample_probabilities(images, dbvae, bins=10, smoothing_fac=0.00
         # update sampling probabilities by considering whether the newly
         #     computed p is greater than the existing sampling probabilities.
         training_sample_p = np.maximum(p, training_sample_p)
+
+    # final normalization
+    training_sample_p /= np.sum(training_sample_p)
+
+    return training_sample_p  # the distribution of all positive samples
+
+
+@tf.function
+def debiasing_train_step(x, y, optimizer, dbvae):
+    # To define the training operation, we will use tf.function which is a powerful tool
+    #   that lets us turn a Python function into a TensorFlow computation graph.
+    with tf.GradientTape() as tape:
+        # Feed input x into dbvae. Note that this is using the DB_VAE call function!
+        y_logit, z_mean, z_logsigma, x_recon = dbvae(x)
+
+        '''TODO: call the DB_VAE loss function to compute the loss'''
+        loss, class_loss = debiasing_loss_function(x=x, x_pred=x_recon, mu=z_mean, logsigma=z_logsigma, y=y,
+                                                   y_logit=y_logit)
+
+    '''TODO: use the GradientTape.gradient method to compute the gradients.
+       Hint: this is with respect to the trainable_variables of the dbvae.'''
+    grads = tape.gradient(loss, dbvae.trainable_variables)
+
+    # apply gradients to variables
+    optimizer.apply_gradients(zip(grads, dbvae.trainable_variables))
+    return loss
+
+
+if __name__ == '__main__':
+    # datasets
+    path_to_training_data = tf.keras.utils.get_file('../../downloads/train_face.h5',
+                                                    'https://www.dropbox.com/s/hlz8atheyozp1yx/train_face.h5?dl=1')
+    loader = mdl.lab2.TrainingDatasetLoader(path_to_training_data)
+    number_of_training_examples = loader.get_train_size()
+    (images, labels) = loader.get_batch(100)
+    ### Define the CNN model ###
+    standard_classifier = make_standard_classifier()
+    ### Train the standard CNN ###
+
+    # Training hyperparameters
+    batch_size = 32
+    num_epochs = 2  # keep small to run faster
+    learning_rate = 5e-4
+    latent_dim = 100  # number of latent variables
+
+    optimizer = tf.keras.optimizers.Adam(learning_rate)  # define our optimizer
+    loss_history = mdl.util.LossHistory(smoothing_factor=0.99)  # to record loss evolution
+    plotter = mdl.util.PeriodicPlotter(sec=2, scale='semilogy')
+    if hasattr(tqdm, '_instances'):
+        tqdm._instances.clear()  # clear if it exists
+
+    # The training loop!
+    for epoch in range(num_epochs):
+        for idx in tqdm(range(loader.get_train_size() // batch_size)):
+            # Grab a batch of training data and propagate through the network
+            x, y = loader.get_batch(batch_size)
+            loss = standard_train_step(x, y)
+
+            # Record the loss and plot the evolution of the loss as a function of training
+            loss_history.append(loss.numpy().mean())
+            plotter.plot(loss_history.get())  # plot loss
+
+    # Evaluation of standard CNN
+    (batch_x, batch_y) = loader.get_batch(5000)
+    y_pred_standard = tf.round(tf.nn.sigmoid(standard_classifier.predict(batch_x)))
+    acc_standard = tf.reduce_mean(tf.cast(tf.equal(batch_y, y_pred_standard), tf.float32))
+
+    print(f'Standard CNN accuracy on (potentially biased) training set: {acc_standard.numpy():.4f}')
+
+    ### Load test dataset and plot examples ###
+
+    test_faces = mdl.lab2.get_test_faces()
+    keys = ["Light Female", "Light Male", "Dark Female", "Dark Male"]
+    for group, key in zip(test_faces, keys):
+        plt.figure(figsize=(5, 5))
+        plt.imshow(np.hstack(group))
+        plt.title(key, fontsize=15)
+    plt.close()
+
+    ### Evaluate the standard CNN on the test data ###
+
+    standard_classifier_logits = [standard_classifier(np.array(x, dtype=np.float32)) for x in test_faces]
+    standard_classifier_probs = tf.squeeze(tf.sigmoid(standard_classifier_logits))  # 4 by 5
+
+    # Plot the prediction accuracies per demographic
+    xx = range(len(keys))
+    yy = standard_classifier_probs.numpy().mean(1)  # mean probability
+    plt.bar(xx, yy)
+    plt.xticks(xx, keys)
+    plt.ylim(max(0, yy.min() - yy.ptp() / 2.), yy.max() + yy.ptp() / 2.)
+    plt.title("Standard classifier predictions")
+
+    ### Defining the VAE loss function ###
