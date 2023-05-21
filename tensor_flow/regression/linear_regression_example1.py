@@ -14,4 +14,6 @@ y_data = X_data + 20 * np.sin(X_data/10)
 n_samples = 1000
 batch_size = 100
 
-# tensorflow is fini
+# tensorflow is finicky about shapes, so resize
+X_data = np.reshape(X_data, (n_samples, 1))
+y_data = np.reshape(y_data, (
