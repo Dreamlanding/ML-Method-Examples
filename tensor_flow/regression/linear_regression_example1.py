@@ -16,4 +16,7 @@ batch_size = 100
 
 # tensorflow is finicky about shapes, so resize
 X_data = np.reshape(X_data, (n_samples, 1))
-y_data = np.reshape(y_data, (
+y_data = np.reshape(y_data, (n_samples, 1))
+
+# define placeholders for input
+X = tf.placeholder(tf.float32, sha
