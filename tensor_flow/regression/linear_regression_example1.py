@@ -20,4 +20,8 @@ y_data = np.reshape(y_data, (n_samples, 1))
 
 # define placeholders for input
 X = tf.placeholder(tf.float32, shape=(batch_size, 1))
-y = tf.placeholder(tf.float32, shape=(batch_size, 1)
+y = tf.placeholder(tf.float32, shape=(batch_size, 1))
+
+# define variables to be learned
+with tf.variable_scope('linear-regression'):
+    W = tf.get_vari
