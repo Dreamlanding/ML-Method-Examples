@@ -24,4 +24,5 @@ y = tf.placeholder(tf.float32, shape=(batch_size, 1))
 
 # define variables to be learned
 with tf.variable_scope('linear-regression'):
-    W = tf.get_vari
+    W = tf.get_variable('weights', (1, 1), initializer=tf.random_normal_initializer())
+    b = tf.get
