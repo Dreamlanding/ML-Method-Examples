@@ -25,4 +25,5 @@ y = tf.placeholder(tf.float32, shape=(batch_size, 1))
 # define variables to be learned
 with tf.variable_scope('linear-regression'):
     W = tf.get_variable('weights', (1, 1), initializer=tf.random_normal_initializer())
-    b = tf.get
+    b = tf.get_variable('bias', (1,), initializer=tf.constant_initializer(0.0))
+    y_pred = tf.matmul(X, W) 
