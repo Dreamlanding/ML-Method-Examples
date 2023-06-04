@@ -29,4 +29,6 @@ with tf.variable_scope('linear-regression'):
     y_pred = tf.matmul(X, W) + b
     loss = tf.reduce_sum((y - y_pred)**2 / n_samples)
 
-# sample code to r
+# sample code to run one step of gradient descent
+opt = tf.train.AdamOptimizer()
+opt_operation = opt.minimize
