@@ -31,4 +31,8 @@ with tf.variable_scope('linear-regression'):
 
 # sample code to run one step of gradient descent
 opt = tf.train.AdamOptimizer()
-opt_operation = opt.minimize
+opt_operation = opt.minimize(loss)
+
+best_para = {'W':0, 'b':0, 'loss_val':100}
+with tf.Session() as sess:
+    # init
