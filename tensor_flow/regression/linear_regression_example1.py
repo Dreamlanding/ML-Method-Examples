@@ -35,4 +35,6 @@ opt_operation = opt.minimize(loss)
 
 best_para = {'W':0, 'b':0, 'loss_val':100}
 with tf.Session() as sess:
-    # init
+    # initialize variables in graph
+    sess.run(tf.initialize_all_variables())
+    # gradient descent 
