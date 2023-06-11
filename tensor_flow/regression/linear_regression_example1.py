@@ -37,4 +37,7 @@ best_para = {'W':0, 'b':0, 'loss_val':100}
 with tf.Session() as sess:
     # initialize variables in graph
     sess.run(tf.initialize_all_variables())
-    # gradient descent 
+    # gradient descent loop for 500 steps
+    for i in range(5000):
+        # select random minibatch
+    
