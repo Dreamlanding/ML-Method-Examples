@@ -40,4 +40,5 @@ with tf.Session() as sess:
     # gradient descent loop for 500 steps
     for i in range(5000):
         # select random minibatch
-    
+        indices = np.random.choice(n_samples, batch_size)
+        X_batch, y_batch = X_data[ind
