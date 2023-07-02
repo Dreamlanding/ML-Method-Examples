@@ -44,4 +44,6 @@ with tf.Session() as sess:
         X_batch, y_batch = X_data[indices], y_data[indices]
         # do gradient descent step
         _, loss_val = sess.run([opt_operation, loss], feed_dict={X: X_batch, y: y_batch})
-        if loss_val <= best_para['loss_val
+        if loss_val <= best_para['loss_val']:
+            best_para['loss_val'] = loss_val
+            best_para['W'] = W.eval
