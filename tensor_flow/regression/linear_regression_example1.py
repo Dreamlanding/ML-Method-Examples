@@ -49,4 +49,8 @@ with tf.Session() as sess:
             best_para['W'] = W.eval()
             best_para['b'] = b.eval()
             print(W.eval(), b.eval())
-  
+            print(loss_val)
+
+# plot input data
+plt.scatter(X_data, y_data)
+y_pred2 =
