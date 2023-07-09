@@ -46,4 +46,7 @@ with tf.Session() as sess:
         _, loss_val = sess.run([opt_operation, loss], feed_dict={X: X_batch, y: y_batch})
         if loss_val <= best_para['loss_val']:
             best_para['loss_val'] = loss_val
-            best_para['W'] = W.eval
+            best_para['W'] = W.eval()
+            best_para['b'] = b.eval()
+            print(W.eval(), b.eval())
+  
