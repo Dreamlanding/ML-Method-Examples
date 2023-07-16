@@ -57,3 +57,12 @@ y_pred2 = X_data * best_para['W'] + best_para['b']
 plt.plot(X_data, y_pred2, 'r--')
 plt.show()
 
+
+
+
+
+
+
+
+
+
