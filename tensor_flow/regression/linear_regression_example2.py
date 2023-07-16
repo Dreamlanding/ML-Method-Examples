@@ -162,3 +162,11 @@ def train_theta_by_mini_batch_gd():
         for epoch in range(n_epochs):
             loss = 0
             for batch_index in range(n_batches):
+                X_batch, y_batch = fetch_batch(epoch, batch_index, batch_size)
+                # 在这里传入mse, 可以返回mse的值
+                _, loss = sess.run([training_op, mse], feed_dict={X: X_batch, y: y_batch})
+            if epoch % 10 == 0:
+                print('Epoch', epoch, 'MSE =', loss)
+        best_theta = theta.eval()
+        print('Best theta is', best_theta)
+train_theta_by_mini_batch_gd()
