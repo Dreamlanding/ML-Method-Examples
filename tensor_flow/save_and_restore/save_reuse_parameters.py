@@ -7,4 +7,7 @@ from sklearn.preprocessing import StandardScaler  #  用于数据缩放
 
 housing = fetch_california_housing()
 m, n = housing.data.shape  # m是样本数，n是特征的数量
-print(
+print(m, n)
+
+# Gradient Descent requires scaling the feature vectors first
+# X的缩放对后面的训练过程影响非常大，经过缩放的
