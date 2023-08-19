@@ -32,4 +32,6 @@ def train_theta_by_gradient_descent(X, y):
     saver = tf.train.Saver()  # create a Saver node after all variable nodes are created
     with tf.Session() as sess:
         sess.run(init)
-        fo
+        for epoch in range(n_epochs):
+            if epoch % 100 == 0:
+                print
