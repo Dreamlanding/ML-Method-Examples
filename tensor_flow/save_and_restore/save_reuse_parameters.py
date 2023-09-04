@@ -35,4 +35,6 @@ def train_theta_by_gradient_descent(X, y):
         for epoch in range(n_epochs):
             if epoch % 100 == 0:
                 print('Epoch', epoch, 'MSE =', mse.eval())
-                saver.save(sess=sess, sa
+                saver.save(sess=sess, save_path='cv/my_model.ckpt')
+            sess.run(training_op)
+        best_theta = t
