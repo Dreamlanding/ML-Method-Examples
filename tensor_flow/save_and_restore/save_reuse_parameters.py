@@ -34,4 +34,5 @@ def train_theta_by_gradient_descent(X, y):
         sess.run(init)
         for epoch in range(n_epochs):
             if epoch % 100 == 0:
-                print
+                print('Epoch', epoch, 'MSE =', mse.eval())
+                saver.save(sess=sess, sa
