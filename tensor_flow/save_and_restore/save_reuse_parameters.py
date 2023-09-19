@@ -40,3 +40,5 @@ def train_theta_by_gradient_descent(X, y):
         best_theta = theta.eval()
         print('The last MSE is', mse.eval())
         print('Best theta is', best_theta)
+        saver.save(sess=sess, save_path='cv/my_model_final.ckpt')
+# train_theta_by_gradi
