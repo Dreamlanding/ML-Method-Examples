@@ -45,4 +45,6 @@ def train_theta_by_gradient_descent(X, y):
 
 def train_theta_by_gd_load_para(X, y):
     # global m
-    # n_epochs
+    # n_epochs = 1000  # 迭代次数
+    # learning_rate = 0.01  # 之前学习率不能太大是因为X没有做缩放
+    theta = tf.Vari
