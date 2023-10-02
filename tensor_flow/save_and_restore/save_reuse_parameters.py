@@ -48,4 +48,6 @@ def train_theta_by_gd_load_para(X, y):
     # n_epochs = 1000  # 迭代次数
     # learning_rate = 0.01  # 之前学习率不能太大是因为X没有做缩放
     theta = tf.Variable(tf.random_uniform([n + 1, 1], -1.0, 1.0), name='theta')
-    y_pred
+    y_pred = tf.matmul(X, theta, name='predictions')
+    error = y_pred - y
+    mse = tf.reduce_mean(tf.s
