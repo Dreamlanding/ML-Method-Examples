@@ -55,4 +55,5 @@ def train_theta_by_gd_load_para(X, y):
     # training_op = tf.assign(theta, theta - learning_rate * gradients)
     # init = tf.global_variables_initializer()
     saver = tf.train.Saver()  # create a Saver node after all variable nodes are created
-    with tf.Session() as se
+    with tf.Session() as sess:
+        saver.restore(sess, 'cv/my_model_final.ckpt')  # 加载上面保存的final c
