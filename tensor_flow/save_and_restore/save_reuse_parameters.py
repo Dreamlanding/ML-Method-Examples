@@ -54,4 +54,5 @@ def train_theta_by_gd_load_para(X, y):
     # gradients = 2.0/m * tf.matmul(tf.transpose(X), error)
     # training_op = tf.assign(theta, theta - learning_rate * gradients)
     # init = tf.global_variables_initializer()
-    saver = tf.train.Saver()  # create a S
+    saver = tf.train.Saver()  # create a Saver node after all variable nodes are created
+    with tf.Session() as se
