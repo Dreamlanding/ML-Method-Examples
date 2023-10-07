@@ -61,4 +61,4 @@ def train_theta_by_gd_load_para(X, y):
         mse, error, theta = sess.run([mse, error, theta])
         print(mse, theta)
         print('error is', error)
-train_t
+train_theta_by_gd_load_para(X_scaled, y)
