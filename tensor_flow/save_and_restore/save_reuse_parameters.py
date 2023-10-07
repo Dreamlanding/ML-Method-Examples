@@ -58,4 +58,7 @@ def train_theta_by_gd_load_para(X, y):
     with tf.Session() as sess:
         saver.restore(sess, 'cv/my_model_final.ckpt')  # 加载上面保存的final check point
         # 在session中可以直接使用这些导入的参数进行运算
-        mse, error, theta = s
+        mse, error, theta = sess.run([mse, error, theta])
+        print(mse, theta)
+        print('error is', error)
+train_t
