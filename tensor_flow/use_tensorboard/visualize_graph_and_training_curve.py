@@ -11,4 +11,7 @@ from datetime import datetime
 # 按照时间创建存放log文件的文件夹，用于tensorBoard的可视化
 now = datetime.utcnow().strftime("%Y%m%d%H%M%S")
 root_logdir = 'tf_logs'
-logdir = '{}/run-{}'.format(root_logdir,
+logdir = '{}/run-{}'.format(root_logdir, now)
+housing = fetch_california_housing()
+m, n = housing.data.shape  # m是样本数，n是特征的数量
+print(m, n)
