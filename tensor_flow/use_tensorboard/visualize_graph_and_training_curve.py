@@ -3,4 +3,6 @@
 # 然后再http://localhost:6006/可以查看面板
 
 import numpy as np
-from sklearn.datasets import fetch_california_h
+from sklearn.datasets import fetch_california_housing
+import tensorflow as tf
+from sklearn.preprocessing import StandardScaler  #  
