@@ -17,4 +17,6 @@ m, n = housing.data.shape  # m是样本数，n是特征的数量
 print(m, n)
 
 # Gradient Descent requires scaling the feature vectors first
-# X的缩放对后面的训练过程影响非常大，经过缩放的数据经过很
+# X的缩放对后面的训练过程影响非常大，经过缩放的数据经过很少的迭代次数就可以收敛，学习率可以设得很大
+scaler = StandardScaler()
+scaled_housing_data = scal
