@@ -26,4 +26,7 @@ y = tf.constant(housing.target.reshape(-1, 1), dtype=tf.float32, name='y')
 
 
 # 方法2：梯度下降法训练参数（手动求导）
-def t
+def train_theta_by_gradient_descent(X, y):
+    global m
+    n_epochs = 1000  # 迭代次数
+    learning_rate = 0.01  
