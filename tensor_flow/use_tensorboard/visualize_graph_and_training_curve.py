@@ -22,4 +22,8 @@ scaler = StandardScaler()
 scaled_housing_data = scaler.fit_transform(housing.data)
 scaled_housing_data_plus_bias = np.c_[np.ones((m, 1)), scaled_housing_data]
 X_scaled = tf.constant(scaled_housing_data_plus_bias, dtype=tf.float32, name='X_scaled')
-y = tf.
+y = tf.constant(housing.target.reshape(-1, 1), dtype=tf.float32, name='y')
+
+
+# 方法2：梯度下降法训练参数（手动求导）
+def t
