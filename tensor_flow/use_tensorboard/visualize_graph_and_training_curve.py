@@ -34,4 +34,5 @@ def train_theta_by_gradient_descent(X, y):
     y_pred = tf.matmul(X, theta, name='predictions')
     error = y_pred - y
     mse = tf.reduce_mean(tf.square(error), name='mse')
-    gradients = 2.0/m * tf.mat
+    gradients = 2.0/m * tf.matmul(tf.transpose(X), error)
+    training_op = tf.assign(theta, theta - learning_rat
