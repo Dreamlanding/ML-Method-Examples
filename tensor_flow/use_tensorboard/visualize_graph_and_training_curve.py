@@ -35,4 +35,6 @@ def train_theta_by_gradient_descent(X, y):
     error = y_pred - y
     mse = tf.reduce_mean(tf.square(error), name='mse')
     gradients = 2.0/m * tf.matmul(tf.transpose(X), error)
-    training_op = tf.assign(theta, theta - learning_rat
+    training_op = tf.assign(theta, theta - learning_rate * gradients)
+    init = tf.global_variables_initializer()
+    # add summary node
