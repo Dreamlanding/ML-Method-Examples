@@ -38,3 +38,5 @@ def train_theta_by_gradient_descent(X, y):
     training_op = tf.assign(theta, theta - learning_rate * gradients)
     init = tf.global_variables_initializer()
     # add summary node
+    mse_summary = tf.summary.scalar('MSE', mse)
+    # create a FileWriter that you can use to w
