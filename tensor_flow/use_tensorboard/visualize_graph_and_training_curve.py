@@ -40,4 +40,5 @@ def train_theta_by_gradient_descent(X, y):
     # add summary node
     mse_summary = tf.summary.scalar('MSE', mse)
     # create a FileWriter that you can use to write summaries to logfiles in the log directory
-    file_writer = tf.summary.FileWriter(
+    file_writer = tf.summary.FileWriter(logdir=logdir, graph=tf.get_default_graph())
+    with tf.Session() as sess
