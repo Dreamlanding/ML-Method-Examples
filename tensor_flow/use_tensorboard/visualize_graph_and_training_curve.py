@@ -44,4 +44,6 @@ def train_theta_by_gradient_descent(X, y):
     with tf.Session() as sess:
         sess.run(init)
         for epoch in range(n_epochs):
-            if epoch
+            if epoch % 10 == 0:
+                print('Epoch', epoch, 'MSE =', mse.eval())
+                # 下面两步将mse sum
