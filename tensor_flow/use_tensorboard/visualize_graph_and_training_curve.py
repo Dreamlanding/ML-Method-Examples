@@ -46,4 +46,6 @@ def train_theta_by_gradient_descent(X, y):
         for epoch in range(n_epochs):
             if epoch % 10 == 0:
                 print('Epoch', epoch, 'MSE =', mse.eval())
-                # 下面两步将mse sum
+                # 下面两步将mse summary写入了log文件
+                summary_str = mse_summary.eval()
+                file_writer
