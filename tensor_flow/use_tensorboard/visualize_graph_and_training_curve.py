@@ -50,4 +50,6 @@ def train_theta_by_gradient_descent(X, y):
                 summary_str = mse_summary.eval()
                 file_writer.add_summary(summary=summary_str, global_step=epoch)
             sess.run(training_op)
-        b
+        best_theta = theta.eval()
+        print('The last MSE is', mse.eval())
+      
