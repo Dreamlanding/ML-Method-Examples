@@ -48,4 +48,6 @@ def train_theta_by_gradient_descent(X, y):
                 print('Epoch', epoch, 'MSE =', mse.eval())
                 # 下面两步将mse summary写入了log文件
                 summary_str = mse_summary.eval()
-                file_writer
+                file_writer.add_summary(summary=summary_str, global_step=epoch)
+            sess.run(training_op)
+        b
