@@ -54,4 +54,4 @@ def train_theta_by_gradient_descent(X, y):
         print('The last MSE is', mse.eval())
         print('Best theta is', best_theta)
     file_writer.close()
-train_theta_by_gradient_descent(X
+train_theta_by_gradient_descent(X_scaled, y)
