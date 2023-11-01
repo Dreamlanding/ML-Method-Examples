@@ -1,1 +1,1 @@
-# ML-Method-Examples\nThis repository contains illustrative examples for v
+# ML-Method-Examples\nThis repository contains illustrative examples for various machine learning methods. It aims to help people get familiar with the basic concep
